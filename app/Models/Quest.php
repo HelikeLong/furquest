@@ -17,7 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $image
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
+ * @property \Carbon\Carbon $deleted_at
  * 
  * @property \Illuminate\Database\Eloquent\Collection $quest_routes
  * @property \Illuminate\Database\Eloquent\Collection $steps

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
  * Public API routes
  */
 Route::group(['middleware' => [\App\Http\Middleware\AddHeaders::class]], function () {
-    Route::post('/login', 'Api\AuthController@login')->name('login');
+    Route::any('/login', 'Api\AuthController@login')->name('login');
 });
 
 /**
@@ -27,7 +27,32 @@ Route::group(['middleware' => [\App\Http\Middleware\AddHeaders::class]], functio
 Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \App\Http\Middleware\AddHeaders::class], 'as' => 'api.'], function () {
     Route::post('/logout', 'AuthController@logout')->name('logout');
 
-    Route::get('/user', function (Request $request) {
-       return $request->user();
+    Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
+        Route::group(['prefix' => '/current', 'as' => 'current.'], function () {
+            Route::get('/', 'UserController@current')->name('get');
+            Route::put('/edit', 'UserController@edit')->name('edit');
+            Route::patch('/photo', 'UserController@editPhoto')->name('editPhoto');
+
+            Route::group(['prefix' => '/contacts', 'as' => 'contacts.'], function () {;
+                Route::post('/', 'UserContactController@add')->name('add');
+                Route::get('/{user_contact?}', 'UserContactController@get')->name('get');
+                Route::put('/{user_contact}', 'UserContactController@edit')->name('edit');
+                Route::delete('/{user_contact}', 'UserContactController@remove')->name('remove');
+            });
+
+            Route::group(['prefix' => '/quests', 'as' => 'quests.'], function () {;
+                Route::get('/{user_quest?}', 'UserQuestController@get')->name('get');
+            });
+
+            Route::group(['prefix' => '/steps', 'as' => 'steps.'], function () {;
+                Route::get('/{user_quest}/{user_quest_step?}', 'UserQuestStepController@get')->name('get');
+            });
+
+            Route::group(['prefix' => '/tips', 'as' => 'tips.'], function () {;
+                Route::get('/{user_quest}/{user_quest_step}', 'UserQuestStepTipController@get')->name('get');
+            });
+        });
+
+        Route::get('/{id}', 'UserController@get')->name('get');
     });
 });

@@ -16,7 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $quest_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
+ * @property \Carbon\Carbon $deleted_at
  * 
  * @property Quest $quest
  * @property \Illuminate\Database\Eloquent\Collection $steps

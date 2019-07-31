@@ -4,7 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GrupoRequest extends FormRequest
+/**
+ * Class AuthRequest
+ * @package App\Http\Requests
+ *
+ * @property $username
+ * @property $password
+ */
+class AuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +30,9 @@ class GrupoRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->isMethod('post')) {
-            return [
-                'titulo' => 'required|max:30|unique:grupos,titulo,' . $this->request->get('id')
-            ];
-        }
-        return [];
+        return [
+            'username' => 'required|email',
+            'password' => 'required|min:6|max:100',
+        ];
     }
-
 }

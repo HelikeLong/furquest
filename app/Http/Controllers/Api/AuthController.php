@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
-use Illuminate\Http\Request;
 use Laravel\Passport\Token;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(AuthRequest $request)
     {
         $http = new Client;
 
@@ -26,14 +26,13 @@ class AuthController extends Controller
             ]);
             return $response->getBody();
         } catch (BadResponseException $e) {
-            dd($e->getMessage());
             if ($e->getCode() === 400) {
-                return response()->json(__('api.login.invalid_request'), $e->getCode());
+                return response()->json(['message' => __('api.auth.invalid_request')], $e->getCode());
             } elseif ($e->getCode() === 401) {
-                return response()->json(__('api.login.incorrect_credentials'), $e->getCode());
+                return response()->json(['message' => __('api.auth.incorrect_credentials')], $e->getCode());
             }
 
-            return response()->json(__('api.login.default_error'), $e->getCode());
+            return response()->json(['message' => __('api.errors.default_error')], $e->getCode());
         }
     }
 
@@ -43,6 +42,6 @@ class AuthController extends Controller
             $token->delete();
         });
 
-        return response()->json(__('api.logout'), 200);
+        return response()->json(['message' => __('api.auth.logout')], 200);
     }
 }

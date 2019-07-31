@@ -2,14 +2,15 @@
 
 namespace App\Services;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
- * Class ImagemService
+ * Class UploadService
  * @package App\Services
  */
-class ImagemService
+class UploadService
 {
     public $Uploaded;
     private $Name;
@@ -18,50 +19,71 @@ class ImagemService
     private static $BaseDir;
 
     /**
-     * ImagemService constructor.
+     * UploadService constructor.
      */
     public function __construct()
     {
-        self::$BaseDir = env('SIMBOLIC_LINK', 'storage') . "/" . env('STORAGE_CLINICA', 'base');
+        self::$BaseDir = env('SIMBOLIC_LINK', 'storage');
     }
 
     /**
-     * @param array $Image
+     * @param UploadedFile|UploadedFile[] $Image
      * @param $Name
      * @param $Width
      * @param $Folder
+     * @param array $thumbnailSizes
+     * @param bool $removeOld
+     * @return bool
      */
-    public function Image(array $Image, $Name, $Width, $Folder)
+    public function Image($Image, $Name, $Width, $Folder, $thumbnailSizes = null, $removeOld = false)
     {
         $this->Name = $Name;
         $this->Width = $Width;
         $this->Folder = $Folder;
+        $Image = is_array($Image) ? $Image : [$Image];
         foreach ($Image as $File) {
-            $this->setFileName($File);
+            $this->setFileName($File, $removeOld);
+        }
+
+        // Generates thumbnails to the given widthes
+        if ($thumbnailSizes) {
+            foreach ($thumbnailSizes as $size) {
+                $this->Image($Image, $Name, $size, $Folder.'/thumbnails/'.$size, null, $removeOld);
+            }
         }
         return true;
     }
 
     /**
-     * Verifica se o arquivo já existe no diretorio e cria um novo hash no nome
-     * @param object $File
+     * Checks if the file name is in use, if it is, creates a new hashed name
+     * @param UploadedFile $File
+     * @param bool $removeOld
+     * @param bool $flagSubFolder
      */
-    private function setFileName($File)
+    private function setFileName($File, $removeOld = false,  $flagSubFolder = false)
     {
-        $SubFolder = Str::slug($this->Name);
-        $Name = $SubFolder;
+        $SubFolder = '';
+        $Name = Str::slug($this->Name);
+        if ($flagSubFolder) {
+            $SubFolder = $Name.'/';
+        }
         $file_extesion = $File->extension();
         $FileName = "{$Name}" . ".{$file_extesion}";
-        if (Storage::disk('public')->exists($this->Folder . '/' . $SubFolder . '/' . $FileName)) {
-            $FileName = "{$Name}-" . substr(md5(bcrypt($Name)), 0, 5) . ".{$file_extesion}";
+        if (Storage::disk('public')->exists($this->Folder . '/' . $SubFolder . $FileName)) {
+            if ($removeOld) {
+                Storage::disk('public')->delete($this->Folder . '/' . $SubFolder . $FileName);
+            } else {
+                $FileName = "{$Name}-" . substr(md5(bcrypt($Name)), 0, 5) . ".{$file_extesion}";
+            }
         }
-        $this->UploadImage($File, $SubFolder . '/' . $FileName);
+        $this->UploadImage($File, $SubFolder . $FileName);
     }
 
     /**
-     * Realiza o upload de imagens redimensionadas
-     * @param object $File
+     * Resizes and uploads the images
+     * @param UploadedFile $File
      * @param $FileName
+     * @return bool
      */
     private function UploadImage($File, $FileName)
     {
@@ -118,14 +140,12 @@ class ImagemService
     }
 
     /**
-     * Método para ser chamado caso exista algum problema na sua sequenência do código
-     * Assim evitamos que as imagens que eforam enviadas e tratadas fiquem no servidor ocupando espaço
+     * Method to remove the uploaded images in case of error
      */
     public function deleteIfError()
     {
         foreach ($this->Uploaded as $upload) {
             Storage::disk('public')->delete($upload);
         }
-        flash('Houve algum problema, e as imagens foram deletadas')->info();
     }
 }

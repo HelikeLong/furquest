@@ -17,7 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $quest_route_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
+ * @property \Carbon\Carbon $deleted_at
  * 
  * @property QuestRoute $quest_route
  * @property User $user
@@ -53,7 +53,7 @@ class UserQuest extends Eloquent
 
 	public function steps()
 	{
-		return $this->belongsToMany(Step::class, 'user_quest_step')
+		return $this->belongsToMany(UserQuestStep::class, 'user_quest_step')
 					->withPivot('id', 'status', 'deleted_at')
 					->withTimestamps();
 	}

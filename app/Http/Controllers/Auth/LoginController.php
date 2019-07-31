@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AutenticarContaRequest;
+use App\Http\Requests\AuthRequest;
 use App\Models\Status;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +52,7 @@ class LoginController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(AutenticarContaRequest $autenticar)
+    public function login(AuthRequest $autenticar)
     {
         if (Auth::guard('web')->attempt([
             'email' => $autenticar->email,

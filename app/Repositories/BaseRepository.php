@@ -2,6 +2,9 @@
         
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Class BaseRepository
  * @package App\Repositories
@@ -9,7 +12,7 @@ namespace App\Repositories;
 abstract class BaseRepository
 {
     /**
-     * @var
+     * @var Model
      */
 	protected $model;
 
@@ -37,7 +40,7 @@ abstract class BaseRepository
      */
 	public function delete($data)
 	{
-		return $this->model->delete($data);
+		return $this->model->find($data)->delete();
 	}
 
     /**
@@ -49,7 +52,7 @@ abstract class BaseRepository
 	}
 
     /**
-     * @return mixed
+     * @return Model|Builder
      */
 	public function model()
 	{

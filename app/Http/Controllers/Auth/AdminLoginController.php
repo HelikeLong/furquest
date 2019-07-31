@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AutenticarContaRequest;
+use App\Http\Requests\AuthRequest;
 use App\Models\UserType;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -47,10 +47,10 @@ class AdminLoginController extends Controller
     }
 
     /**
-     * @param AutenticarContaRequest $autenticar
+     * @param AuthRequest $autenticar
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(AutenticarContaRequest $autenticar)
+    public function login(AuthRequest $autenticar)
     {
         if (Auth::guard('admin')->attempt([
             'email' => $autenticar->email,

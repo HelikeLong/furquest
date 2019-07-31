@@ -21,15 +21,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $species
  * @property string $photo
  * @property string $bio
- * @property string $phone
- * @property int $phone_show
  * @property string $document
  * @property string $document_type
  * @property string $email
  * @property string $password
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
+ * @property \Carbon\Carbon $deleted_at
  * 
  * @property UserType $user_type
  * @property \Illuminate\Database\Eloquent\Collection $guilds
@@ -58,8 +56,6 @@ class User extends Authenticatable
 		'species',
 		'photo',
 		'bio',
-		'phone',
-		'phone_show',
 		'document',
 		'document_type',
 		'email',
