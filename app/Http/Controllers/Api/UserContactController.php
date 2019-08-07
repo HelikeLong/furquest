@@ -22,11 +22,23 @@ class UserContactController extends Controller
         $this->userContactService = $userContactService;
     }
 
+    /**
+     * Adds a contact to the current user
+     *
+     * @param UserContactRequest $request
+     * @return \App\Models\UserContact|null
+     */
     public function add(UserContactRequest $request)
     {
         return $this->userContactService->store($request);
     }
 
+    /**
+     * Gets a contact or a collection of contacts of the current user
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Relations\HasMany|\Illuminate\Database\Eloquent\Relations\HasMany[]
+     */
     public function get($id = 0)
     {
         if ($id) {
@@ -36,11 +48,24 @@ class UserContactController extends Controller
         }
     }
 
+    /**
+     * Edits a contact of the current user
+     *
+     * @param UserContactRequest $request
+     * @param $id
+     * @return \App\Models\UserContact|null
+     */
     public function edit(UserContactRequest $request, $id)
     {
         return $this->userContactService->store($request, $id);
     }
 
+    /**
+     * Soft deletes a contact of the current user
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function remove($id)
     {
         return response()->json(['response' => $this->userContactRepository->remove($id)], 200);

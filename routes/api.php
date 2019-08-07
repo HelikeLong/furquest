@@ -46,6 +46,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \App\Http\Middl
 
             Route::group(['prefix' => '/steps', 'as' => 'steps.'], function () {;
                 Route::get('/{user_quest}/{user_quest_step?}', 'UserQuestStepController@get')->name('get');
+                Route::post('/{user_quest}/{user_quest_step}/next', 'UserQuestStepController@next')->name('next');
             });
 
             Route::group(['prefix' => '/tips', 'as' => 'tips.'], function () {;
@@ -54,5 +55,9 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \App\Http\Middl
         });
 
         Route::get('/{id}', 'UserController@get')->name('get');
+    });
+
+    Route::group(['prefix' => '/guilds', 'as' => 'guilds.'], function () {
+        Route::get('/{id}', 'GuildController@get')->name('get');
     });
 });

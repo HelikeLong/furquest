@@ -24,8 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property Quest $quest
  * @property Step $step
- * @property \Illuminate\Database\Eloquent\Collection $user_quests
- * @property \Illuminate\Database\Eloquent\Collection $user_quest_steps
+ * @property \Illuminate\Database\Eloquent\Collection $user_quest_step_tips
  *
  * @package App\Models
  */
@@ -58,17 +57,8 @@ class Tip extends Eloquent
 		return $this->belongsTo(Step::class);
 	}
 
-	public function user_quests()
+	public function user_quest_step_tips()
 	{
-		return $this->belongsToMany(UserQuest::class, 'user_quest_step_tip')
-					->withPivot('id', 'user_quest_step_id', 'deleted_at')
-					->withTimestamps();
-	}
-
-	public function user_quest_steps()
-	{
-		return $this->belongsToMany(UserQuestStep::class, 'user_quest_step_tip')
-					->withPivot('id', 'user_quest_id', 'deleted_at')
-					->withTimestamps();
+		return $this->belongsToMany(UserQuestStepTip::class);
 	}
 }

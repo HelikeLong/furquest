@@ -25,6 +25,8 @@ class UserQuestStepTipRepository extends BaseRepository
     }
 
     /**
+     * Return the available tips for a step
+     *
      * @param $userQuest
      * @param int $userQuestSteps
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Model[]|object|null

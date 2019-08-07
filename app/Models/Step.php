@@ -25,11 +25,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $deleted_at
  * 
  * @property Quest $quest
- * @property \Illuminate\Database\Eloquent\Collection $quests
- * @property \Illuminate\Database\Eloquent\Collection $quest_routes
+ * @property \Illuminate\Database\Eloquent\Collection $quest_routes_step_dest
+ * @property \Illuminate\Database\Eloquent\Collection $quest_routes_step_origin
  * @property \Illuminate\Database\Eloquent\Collection $step_rewards
  * @property \Illuminate\Database\Eloquent\Collection $tips
- * @property \Illuminate\Database\Eloquent\Collection $user_quests
+ * @property \Illuminate\Database\Eloquent\Collection $user_quest_step
  *
  * @package App\Models
  */
@@ -57,18 +57,14 @@ class Step extends Eloquent
 		return $this->belongsTo(Quest::class);
 	}
 
-	public function quests()
+	public function quest_routes_step_dest()
 	{
-		return $this->belongsToMany(Quest::class, 'quest_routes_steps', 'step_dest_id')
-					->withPivot('id', 'quest_route_id', 'step_origin_id', 'deleted_at')
-					->withTimestamps();
+		return $this->belongsToMany(QuestRoutesStep::class, 'quest_routes_steps', 'step_dest_id');
 	}
 
-	public function quest_routes()
+	public function quest_routes_step_origin()
 	{
-		return $this->belongsToMany(QuestRoute::class, 'quest_routes_steps', 'step_dest_id')
-					->withPivot('id', 'quest_id', 'step_origin_id', 'deleted_at')
-					->withTimestamps();
+        return $this->belongsToMany(QuestRoutesStep::class, 'quest_routes_steps', 'step_origin_id');
 	}
 
 	public function step_rewards()
@@ -81,10 +77,8 @@ class Step extends Eloquent
 		return $this->hasMany(Tip::class);
 	}
 
-	public function user_quests()
+	public function user_quest_step()
 	{
-		return $this->belongsToMany(UserQuest::class, 'user_quest_step')
-					->withPivot('id', 'status', 'deleted_at')
-					->withTimestamps();
+		return $this->belongsToMany(UserQuestStep::class);
 	}
 }

@@ -24,6 +24,13 @@ class UserContactService
         $this->userContactRepository = $userContactRepository;
     }
 
+    /**
+     * Saves a contact for the current user
+     *
+     * @param UserContactRequest $request
+     * @param int $id
+     * @return UserContact|null
+     */
     public function store(UserContactRequest $request, $id = 0)
     {
         $userContact = null;

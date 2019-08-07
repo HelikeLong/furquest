@@ -12,6 +12,12 @@ class UserQuestController extends Controller
         parent::__construct();
     }
 
+    /**
+     * Gets a quest or a collection of quests assign to the current user
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Relations\HasMany|\Illuminate\Database\Eloquent\Relations\HasMany[]
+     */
     public function get($id = 0)
     {
         if ($id) {

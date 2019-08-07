@@ -19,6 +19,13 @@ class UserQuestStepTipController extends Controller
         $this->userQuestStepTipRepository = $userQuestStepTipRepository;
     }
 
+    /**
+     * Gets the tips available for a step
+     *
+     * @param $quest
+     * @param $step
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Model[]|object|null
+     */
     public function get($quest, $step)
     {
         return $this->userQuestStepTipRepository->getTips($quest, $step);

@@ -19,7 +19,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $deleted_at
  * 
  * @property Quest $quest
- * @property \Illuminate\Database\Eloquent\Collection $steps
+ * @property \Illuminate\Database\Eloquent\Collection $quest_routes_steps
  * @property \Illuminate\Database\Eloquent\Collection $user_quests
  *
  * @package App\Models
@@ -41,11 +41,9 @@ class QuestRoute extends Eloquent
 		return $this->belongsTo(Quest::class);
 	}
 
-	public function steps()
+	public function quest_routes_steps()
 	{
-		return $this->belongsToMany(Step::class, 'quest_routes_steps', 'quest_route_id', 'step_dest_id')
-					->withPivot('id', 'quest_id', 'step_origin_id', 'deleted_at')
-					->withTimestamps();
+		return $this->hasMany(QuestRoutesStep::class);
 	}
 
 	public function user_quests()

@@ -24,6 +24,12 @@ class UserContactRepository extends BaseRepository
         $this->model = $UserContact;
     }
 
+    /**
+     * Removes a contact from the current user
+     *
+     * @param $id
+     * @return bool|mixed|null
+     */
     public function remove($id)
     {
         try {
