@@ -24,8 +24,8 @@ Route::group(['middleware' => [\App\Http\Middleware\AddHeaders::class]], functio
 /**
  * Auth required API routes
  */
-Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \App\Http\Middleware\AddHeaders::class], 'as' => 'api.'], function () {
-    Route::post('/logout', 'AuthController@logout')->name('logout');
+Route::group(['namespace' => 'Api', 'middleware' => ['auth:api'], 'as' => 'api.'], function () {
+    Route::any('/logout', 'AuthController@logout')->name('logout');
 
     Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
         Route::group(['prefix' => '/current', 'as' => 'current.'], function () {
