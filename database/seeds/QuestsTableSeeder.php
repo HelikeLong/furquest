@@ -20,7 +20,7 @@ class QuestsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Pirates \'n Gears',
+                'name' => 'Kittens!',
                 'image' => NULL,
                 'created_at' => NULL,
                 'updated_at' => NULL,

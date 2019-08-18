@@ -19,20 +19,16 @@
         <div class="row">
             <div class="col-12">
                 <div class="wrapper-page">
-                    <div class="account-pages">
+                    <div class="account-pages text-center">
+                        <span><img src="{{ asset('images/logo-negative-typo.png')}}" alt="" height="300"></span>
                         <div class="account-box">
                             <div class="account-logo-box">
                                 @include('flash::message')
                                 @include('layouts.elements.validator')
-                                <h2 class="text-uppercase text-center">
-                                    <a href="#" target="_blank" class="text-success">
-                                        <span><img src="{{ asset('images/logo.png')}}" alt="" height="100"></span>
-                                    </a>
-                                </h2>
                             </div>
                             <div class="account-content">
                                 <div class="button-container">
-                                    <button onclick="window.location='{{route('admin.dashboard')}}'"><span>Acessar o sistema</span></button>
+                                    <h1>Site em desenvolvimento</h1>
                                 </div>
                             </div>
                         </div>

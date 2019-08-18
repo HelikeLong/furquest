@@ -24,8 +24,8 @@ Route::group(['middleware' => [\App\Http\Middleware\AddHeaders::class]], functio
 /**
  * Auth required API routes
  */
-Route::group(['namespace' => 'Api', 'middleware' => ['auth:api'], 'as' => 'api.'], function () {
-    Route::any('/logout', 'AuthController@logout')->name('logout');
+Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\HandleCors::class], 'as' => 'api.'], function () {
+    Route::match(['options', 'post'], '/logout', 'AuthController@logout')->name('logout');
 
     Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
         Route::group(['prefix' => '/current', 'as' => 'current.'], function () {
@@ -41,6 +41,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api'], 'as' => 'api.'
             });
 
             Route::group(['prefix' => '/quests', 'as' => 'quests.'], function () {;
+                Route::get('/current', 'UserQuestController@current')->name('current');
                 Route::get('/{user_quest?}', 'UserQuestController@get')->name('get');
             });
 

@@ -25,7 +25,17 @@ class UserQuestController extends Controller
                 ->with(['quest_route', 'quest_route.quest'])
                 ->findOrFail($id);
         } else {
-            return $this->current->user_quests()->get();
+            return $this->current->user_quests()
+                ->with(['quest_route', 'quest_route.quest'])
+                ->get();
         }
+    }
+
+    public function current()
+    {
+      return $this->current->user_quests()
+          ->with(['quest_route', 'quest_route.quest'])
+          ->orderByDesc('id')
+          ->first();
     }
 }

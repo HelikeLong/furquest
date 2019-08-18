@@ -38,4 +38,18 @@ public function __construct(User $User)
             ->with(['user_contacts'])
             ->findOrFail($id);
     }
+
+    /**
+     * Gets current user main data
+     *
+     * @param $id
+     * @return Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
+     */
+    public function getCurrent($id)
+    {
+        return $this->model()
+            ->select(['id', 'name', 'social_name', 'species', 'photo'])
+            ->with(['guilds'])
+            ->find($id);
+    }
 }
