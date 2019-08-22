@@ -22,7 +22,7 @@ class UserQuestController extends Controller
     {
         if ($id) {
             return $this->current->user_quests()
-                ->with(['quest_route', 'quest_route.quest'])
+                ->with(['quest_route', 'quest_route.quest', 'user_quest_steps', 'user_quest_steps.step'])
                 ->findOrFail($id);
         } else {
             return $this->current->user_quests()

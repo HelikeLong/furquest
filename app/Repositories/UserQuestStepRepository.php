@@ -41,7 +41,7 @@ class UserQuestStepRepository extends BaseRepository
             ->where([
                 'user_quest_id' => $userQuest
             ])
-            ->with('step');
+            ->with('step', 'user_quest_step_tip', 'user_quest_step_tip.tip');
 
         if ($id) {
             return $steps->where(['id' => $id])

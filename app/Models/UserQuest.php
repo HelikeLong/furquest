@@ -51,17 +51,8 @@ class UserQuest extends Eloquent
 		return $this->belongsTo(User::class);
 	}
 
-	public function steps()
+	public function user_quest_steps()
 	{
-		return $this->belongsToMany(UserQuestStep::class, 'user_quest_step')
-					->withPivot('id', 'status', 'deleted_at')
-					->withTimestamps();
-	}
-
-	public function tips()
-	{
-		return $this->belongsToMany(Tip::class, 'user_quest_step_tip')
-					->withPivot('id', 'user_quest_step_id', 'deleted_at')
-					->withTimestamps();
+		return $this->hasMany(UserQuestStep::class);
 	}
 }
