@@ -39,7 +39,7 @@ class UserQuestStepController extends Controller
      * @param UserQuestStepRequest $userQuestStepRequest
      * @return UserQuestStep|\Illuminate\Http\JsonResponse|string
      */
-    public function next($quest, $step, UserQuestStepRequest $userQuestStepRequest)
+    public function finish($quest, $step, UserQuestStepRequest $userQuestStepRequest)
     {
         $res = $this->userQuestStepRepository->finishStep($step, $userQuestStepRequest);
         if (is_string($res)) {

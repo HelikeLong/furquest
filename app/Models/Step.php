@@ -15,7 +15,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $quest_id
  * @property string $name
- * @property string $qrcode
+ * @property string $resolution
+ * @property int $resolution_type
  * @property string $content
  * @property string $lat
  * @property string $long
@@ -39,13 +40,15 @@ class Step extends Eloquent
 
 	protected $casts = [
 		'quest_id' => 'int',
+        'resolution_type' => 'int',
 		'status' => 'int'
 	];
 
 	protected $fillable = [
 		'quest_id',
 		'name',
-		'qrcode',
+		'resolution',
+        'resolution_type',
 		'content',
 		'lat',
 		'long',
