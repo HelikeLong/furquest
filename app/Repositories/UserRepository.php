@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class UserRepository
@@ -29,14 +30,21 @@ public function __construct(User $User)
      * Get specific user non-sensitive data
      *
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Model[]
+     * @return array
      */
     public function getProfile($id)
     {
-        return $this->model()
+        $user = $this->model()
             ->select(['id', 'name', 'social_name', 'species', 'bio', 'photo'])
-            ->with(['user_contacts'])
-            ->findOrFail($id);
+            ->with(['user_contacts', 'user_contacts.contacts_type'])
+            ->findOrFail($id)
+            ->toArray();
+
+        if ($id == Auth::user()->getAuthIdentifier()) {
+            $user['current'] = 1;
+        }
+
+        return $user;
     }
 
     /**
