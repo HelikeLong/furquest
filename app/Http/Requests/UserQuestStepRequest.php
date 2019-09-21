@@ -9,12 +9,12 @@ use Illuminate\Http\UploadedFile;
  * Class UserQuestStepRequest
  * @package App\Http\Requests
  *
- * @property string $qrcode
+ * @property string $answers
  */
 class UserQuestStepRequest extends FormRequest
 {
     protected $rules = [
-        'qrcode' => 'string|required'
+        'answers' => 'array|required'
     ];
 
     /**

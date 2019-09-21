@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Http\Requests\UserQuestStepRequest;
 use App\Models\QuestRoute;
 use App\Models\QuestRoutesStep;
+use App\Models\StepReward;
 use App\Models\Tip;
 use App\Models\UserQuest;
 use App\Models\UserQuestStep;
@@ -67,18 +68,28 @@ class UserQuestStepRepository extends BaseRepository
         }
 
         // Process the qrcodes
-        $stepQrCode = $userQuestStep->step()->first()->qrcode;
-        $qrcode = $userQuestStepRequest->qrcode;
+        $stepResolution = explode('###', $userQuestStep->step()->first()->resolution);
+        $resolution = $userQuestStepRequest->answers;
 
         // Check qrcodes
-        if ($stepQrCode != $qrcode) {
-            return 'WRONG_QRCODE';
+        if (!$this->checkResolution($stepResolution, $resolution)) {
+            return 'WRONG_RESOLUTION';
         } else {
             // Finish step for the active user
             return $this->processFinishStep($userQuestStep);
 
             //TODO: Finish step for the active user's guild partners
         }
+    }
+
+    public function checkResolution($stepResolution, $resolution)
+    {
+        $result = true;
+        foreach ($resolution as $res) {
+            $res = strip_tags(strtolower($res));
+            $result &= (in_array($res, $stepResolution));
+        }
+        return $result;
     }
 
     /**
@@ -110,6 +121,11 @@ class UserQuestStepRepository extends BaseRepository
             }
         }
 
+        //Get step rewards
+        /** @var StepReward $stepRewards */
+        $stepRewards = $userQuestStep->step()->first()->step_rewards()
+            ->with('reward_type')->get()->toArray();
+
         // Get next step
         /** @var QuestRoute $questRoute */
         $questRoute = $userQuest->quest_route()->first();
@@ -125,9 +141,9 @@ class UserQuestStepRepository extends BaseRepository
             $new_userQuestStep->user_quest_id = $userQuest->id;
             $new_userQuestStep->save();
 
-            return $new_userQuestStep;
-        } else {
-            return 'STEP_NOT_FOUND';
+            $stepRewards['nextStep'] = $new_userQuestStep;
         }
+
+        return $stepRewards;
     }
 }

@@ -16,7 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $quest_id
  * @property string $name
  * @property string $resolution
- * @property int $resolution_type
+ * @property int $resolution_count
  * @property string $content
  * @property string $lat
  * @property string $long
@@ -40,7 +40,7 @@ class Step extends Eloquent
 
 	protected $casts = [
 		'quest_id' => 'int',
-        'resolution_type' => 'int',
+        'resolution_count' => 'int',
 		'status' => 'int'
 	];
 
@@ -48,7 +48,7 @@ class Step extends Eloquent
 		'quest_id',
 		'name',
 		'resolution',
-        'resolution_type',
+        'resolution_count',
 		'content',
 		'lat',
 		'long',
@@ -72,7 +72,7 @@ class Step extends Eloquent
 
 	public function step_rewards()
 	{
-		return $this->hasMany(StepReward::class, 'steps_id');
+		return $this->hasMany(StepReward::class);
 	}
 
 	public function tips()

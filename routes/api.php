@@ -48,6 +48,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
             Route::group(['prefix' => '/steps', 'as' => 'steps.'], function () {;
                 Route::get('/{user_quest}/{user_quest_step?}', 'UserQuestStepController@get')->name('get');
                 Route::post('/{user_quest}/{user_quest_step}/finish', 'UserQuestStepController@finish')->name('finish');
+                Route::get('/{user_quest}/{user_quest_step}/rewards', 'UserQuestStepController@getRewards')->name('rewards');
             });
 
             Route::group(['prefix' => '/tips', 'as' => 'tips.'], function () {;
