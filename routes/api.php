@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
 
             Route::group(['prefix' => '/tips', 'as' => 'tips.'], function () {;
                 Route::get('/{user_quest}/{user_quest_step}', 'UserQuestStepTipController@get')->name('get');
+                Route::post('/{user_quest}/{user_quest_step}/next', 'UserQuestStepTipController@next')->name('next');
             });
         });
 

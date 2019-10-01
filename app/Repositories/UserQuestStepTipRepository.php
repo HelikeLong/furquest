@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\UserQuestStep;
 use App\Models\UserQuestStepTip;
 
 /**
@@ -40,5 +41,31 @@ class UserQuestStepTipRepository extends BaseRepository
             ])
             ->with('tip')
             ->get();
+    }
+
+    public function nextTip($userQuest, $userQuestSteps)
+    {
+        $step = UserQuestStep::where([
+            'user_quest_id' => $userQuest,
+            'id' => $userQuestSteps
+        ])
+        ->with(['step', 'step.tips'])
+        ->first();
+
+        $currentTips = $this->model()
+            ->select(['id'])
+            ->where([
+                'user_quest_id' => $userQuest,
+                'user_quest_step_id' => $userQuestSteps
+            ])->count();
+
+        $nextTip = $step->step->tips[$currentTips ? $currentTips : 0];
+        if( $this->model()->create([
+            'user_quest_id' => $userQuest,
+            'user_quest_step_id' => $userQuestSteps,
+            'tip_id' => $nextTip->id
+        ]) ) {
+            return $this->getTips($userQuest, $userQuestSteps);
+        }
     }
 }

@@ -30,4 +30,9 @@ class UserQuestStepTipController extends Controller
     {
         return $this->userQuestStepTipRepository->getTips($quest, $step);
     }
+
+    public function next($quest, $step)
+    {
+        return $this->userQuestStepTipRepository->nextTip($quest, $step);
+    }
 }
