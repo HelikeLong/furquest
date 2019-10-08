@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Guild;
+use App\Models\UserQuest;
 use App\Models\UserQuestStep;
 use App\Models\UserQuestStepTip;
 
@@ -65,6 +67,35 @@ class UserQuestStepTipRepository extends BaseRepository
             'user_quest_step_id' => $userQuestSteps,
             'tip_id' => $nextTip->id
         ]) ) {
+            //TODO: Create tip for the active user's guild partners
+            $guildMembers = Guild::with([
+                'users' => function ($query) {
+                    $query->where('user_id', auth()->user()->id);
+                }
+            ])
+            ->first()
+            ->users()->get();
+
+            foreach ($guildMembers as $guildMember) {
+                if ($guildMember->id === auth()->user()->id) {
+                    continue;
+                }
+                /** @var UserQuestStep $memberQuestStep */
+                $memberQuestStep = UserQuest::where([
+                    'user_id' => $guildMember->id,
+                    'quest_route_id' => $step->user_quest->quest_route_id
+                ])->first()
+                    ->user_quest_steps()
+                    ->where('step_id', $step->step->id)
+                    ->first();
+
+                $this->model()->create([
+                    'user_quest_id' => $memberQuestStep->user_quest_id,
+                    'user_quest_step_id' => $memberQuestStep->id,
+                    'tip_id' => $nextTip->id
+                ]);
+            }
+
             return $this->getTips($userQuest, $userQuestSteps);
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Http\Requests\UserQuestStepRequest;
+use App\Models\Guild;
 use App\Models\QuestRoute;
 use App\Models\QuestRoutesStep;
 use App\Models\StepReward;
@@ -10,6 +11,7 @@ use App\Models\Tip;
 use App\Models\UserQuest;
 use App\Models\UserQuestStep;
 use App\Models\UserQuestStepTip;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class UserQuestStepRepository
@@ -75,10 +77,11 @@ class UserQuestStepRepository extends BaseRepository
         if (!$this->checkResolution($stepResolution, $resolution)) {
             return 'WRONG_RESOLUTION';
         } else {
+            //Finish step for the active user's guild partners
+            $this->processFinishStepGuild($userQuestStep);
+
             // Finish step for the active user
             return $this->processFinishStep($userQuestStep);
-
-            //TODO: Finish step for the active user's guild partners
         }
     }
 
@@ -145,5 +148,37 @@ class UserQuestStepRepository extends BaseRepository
         }
 
         return $stepRewards;
+    }
+
+    /**
+     * Process the step finishing tasks for guild members
+     *
+     * @param UserQuestStep $userQuestStep
+     * @return UserQuestStep|string
+     */
+    public function processFinishStepGuild(UserQuestStep $userQuestStep)
+    {
+        $guildMembers = Guild::with([
+                'users' => function ($query) {
+                    $query->where('user_id', auth()->user()->id);
+                }
+            ])
+            ->first()
+            ->users()->get();
+
+        foreach ($guildMembers as $guildMember) {
+            if ($guildMember->id === auth()->user()->id) {
+                continue;
+            }
+            $memberQuestStep = UserQuest::where([
+                'user_id' => $guildMember->id,
+                'quest_route_id' => $userQuestStep->user_quest->quest_route_id
+            ])->first()
+            ->user_quest_steps()
+            ->where('step_id', $userQuestStep->step->id)
+            ->first();
+
+            $this->processFinishStep($memberQuestStep);
+        }
     }
 }
