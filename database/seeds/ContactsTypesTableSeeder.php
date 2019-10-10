@@ -21,49 +21,49 @@ class ContactsTypesTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'type' => 'phone',
-                'icon' => 'mdi-phone',
-                'mask' => NULL,
+                'icon' => 'call',
+                'mask' => 'tel:#VALUE#',
             ),
             1 => 
             array (
                 'id' => 2,
-                'type' => 'telegram',
-                'icon' => 'mdi-telegram',
+                'type' => 'custom-furaffinity',
+                'icon' => 'custom-mdi-telegram',
                 'mask' => 'https://t.me/#VALUE#',
             ),
             2 => 
             array (
                 'id' => 3,
                 'type' => 'furaffinity',
-                'icon' => 'mdi-paw',
+                'icon' => 'paw',
                 'mask' => 'https://www.furaffinity.net/user/#VALUE#',
             ),
             3 => 
             array (
                 'id' => 4,
                 'type' => 'facebook',
-                'icon' => 'mdi-facebook-box',
+                'icon' => 'custom-mdi-facebook',
                 'mask' => 'https://fb.me/#VALUE#',
             ),
             4 => 
             array (
                 'id' => 5,
                 'type' => 'twitter',
-                'icon' => 'mdi-twitter',
+                'icon' => 'logo-twitter',
                 'mask' => 'https://twitter.com/#VALUE#',
             ),
             5 => 
             array (
                 'id' => 6,
                 'type' => 'deviantart',
-                'icon' => 'mdi-deviantart',
+                'icon' => 'custom-mdi-deviantart',
                 'mask' => 'https://#VALUE#.deviantart.com',
             ),
             6 => 
             array (
                 'id' => 7,
                 'type' => 'other',
-                'icon' => 'mdi-earth',
+                'icon' => 'globe',
                 'mask' => NULL,
             ),
         ));

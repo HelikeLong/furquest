@@ -13,7 +13,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * Class StepReward
  * 
  * @property int $id
- * @property int $steps_id
+ * @property int $step_id
  * @property int $reward_type_id
  * @property string $value
  * @property \Carbon\Carbon $created_at
@@ -30,12 +30,12 @@ class StepReward extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'steps_id' => 'int',
+		'step_id' => 'int',
 		'reward_type_id' => 'int'
 	];
 
 	protected $fillable = [
-		'steps_id',
+		'step_id',
 		'reward_type_id',
 		'value'
 	];
@@ -47,6 +47,6 @@ class StepReward extends Eloquent
 
 	public function step()
 	{
-		return $this->belongsTo(Step::class, 'steps_id');
+		return $this->belongsTo(Step::class);
 	}
 }

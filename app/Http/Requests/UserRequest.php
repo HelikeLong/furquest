@@ -25,10 +25,10 @@ class UserRequest extends FormRequest
         'social_name' => 'string|nullable',
         'name' => 'string|nullable',
         'species' => 'string|nullable',
-        'photo' => 'image|mimes:jpeg,jpg,png|nullable',
+        'photo' => 'nullable|image|mimes:jpeg,jpg,png',
         'bio' => 'string|nullable',
         'document' => 'string|nullable',
-        'document_type' => 'integer|nullable',
+        'document_type' => 'string|nullable',
         'email' => 'email',
         'password' => 'password'
     ];
@@ -67,7 +67,6 @@ class UserRequest extends FormRequest
      */
     private function put() {
         $this->rules['name'] .= '|required';
-        $this->rules['email'] .= '|required';
     }
 
     /**

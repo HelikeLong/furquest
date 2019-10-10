@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserQuestStepRequest;
 use App\Models\UserQuestStep;
+use App\Repositories\StepRewardRepository;
 use App\Repositories\UserQuestStepRepository;
 use App\Http\Controllers\Controller;
 
@@ -11,12 +12,15 @@ class UserQuestStepController extends Controller
 {
     /** @var UserQuestStepRepository */
     private $userQuestStepRepository;
+    /** @var StepRewardRepository */
+    private $stepRewardsRepository;
 
-    public function __construct(UserQuestStepRepository $userQuestStepRepository)
+    public function __construct(UserQuestStepRepository $userQuestStepRepository, StepRewardRepository $stepRewardsRepository)
     {
         parent::__construct();
 
         $this->userQuestStepRepository = $userQuestStepRepository;
+        $this->stepRewardsRepository = $stepRewardsRepository;
     }
 
     /**
@@ -39,9 +43,25 @@ class UserQuestStepController extends Controller
      * @param UserQuestStepRequest $userQuestStepRequest
      * @return UserQuestStep|\Illuminate\Http\JsonResponse|string
      */
-    public function next($quest, $step, UserQuestStepRequest $userQuestStepRequest)
+    public function finish($quest, $step, UserQuestStepRequest $userQuestStepRequest)
     {
         $res = $this->userQuestStepRepository->finishStep($step, $userQuestStepRequest);
+        if (is_string($res)) {
+            return response()->json(['msg' => $res], 400);
+        }
+        return $res;
+    }
+
+    /**
+     * Gets finished step's rewards
+     *
+     * @param $quest
+     * @param $step
+     * @return \App\Models\StepReward|\Illuminate\Http\JsonResponse
+     */
+    public function getRewards($quest, $step)
+    {
+        $res = $this->stepRewardsRepository->getRewards($quest, $step);
         if (is_string($res)) {
             return response()->json(['msg' => $res], 400);
         }

@@ -34,9 +34,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
             Route::patch('/photo', 'UserController@editPhoto')->name('editPhoto');
 
             Route::group(['prefix' => '/contacts', 'as' => 'contacts.'], function () {;
-                Route::post('/', 'UserContactController@add')->name('add');
+                Route::post('/save', 'UserContactController@save')->name('save');
                 Route::get('/{user_contact?}', 'UserContactController@get')->name('get');
-                Route::put('/{user_contact}', 'UserContactController@edit')->name('edit');
                 Route::delete('/{user_contact}', 'UserContactController@remove')->name('remove');
             });
 
@@ -47,11 +46,13 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
 
             Route::group(['prefix' => '/steps', 'as' => 'steps.'], function () {;
                 Route::get('/{user_quest}/{user_quest_step?}', 'UserQuestStepController@get')->name('get');
-                Route::post('/{user_quest}/{user_quest_step}/next', 'UserQuestStepController@next')->name('next');
+                Route::post('/{user_quest}/{user_quest_step}/finish', 'UserQuestStepController@finish')->name('finish');
+                Route::get('/{user_quest}/{user_quest_step}/rewards', 'UserQuestStepController@getRewards')->name('rewards');
             });
 
             Route::group(['prefix' => '/tips', 'as' => 'tips.'], function () {;
                 Route::get('/{user_quest}/{user_quest_step}', 'UserQuestStepTipController@get')->name('get');
+                Route::post('/{user_quest}/{user_quest_step}/next', 'UserQuestStepTipController@next')->name('next');
             });
         });
 
@@ -60,5 +61,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
 
     Route::group(['prefix' => '/guilds', 'as' => 'guilds.'], function () {
         Route::get('/{id}', 'GuildController@get')->name('get');
+    });
+    Route::group(['prefix' => '/contact-types', 'as' => 'contact-types.'], function () {
+        Route::get('/', 'UserContactController@getTypes')->name('getTypes');
     });
 });
