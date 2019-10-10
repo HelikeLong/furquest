@@ -34,9 +34,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
             Route::patch('/photo', 'UserController@editPhoto')->name('editPhoto');
 
             Route::group(['prefix' => '/contacts', 'as' => 'contacts.'], function () {;
-                Route::post('/', 'UserContactController@add')->name('add');
+                Route::post('/save', 'UserContactController@save')->name('save');
                 Route::get('/{user_contact?}', 'UserContactController@get')->name('get');
-                Route::put('/{user_contact}', 'UserContactController@edit')->name('edit');
                 Route::delete('/{user_contact}', 'UserContactController@remove')->name('remove');
             });
 
@@ -62,5 +61,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
 
     Route::group(['prefix' => '/guilds', 'as' => 'guilds.'], function () {
         Route::get('/{id}', 'GuildController@get')->name('get');
+    });
+    Route::group(['prefix' => '/contact-types', 'as' => 'contact-types.'], function () {
+        Route::get('/', 'UserContactController@getTypes')->name('getTypes');
     });
 });

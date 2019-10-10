@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserContactRequest;
+use App\Models\ContactsType;
 use App\Repositories\UserContactRepository;
 use App\Http\Controllers\Controller;
 use App\Services\UserContactService;
@@ -28,7 +29,7 @@ class UserContactController extends Controller
      * @param UserContactRequest $request
      * @return \App\Models\UserContact|null
      */
-    public function add(UserContactRequest $request)
+    public function save(UserContactRequest $request)
     {
         return $this->userContactService->store($request);
     }
@@ -42,22 +43,14 @@ class UserContactController extends Controller
     public function get($id = 0)
     {
         if ($id) {
-            return $this->current->user_contacts()->findOrFail($id);
+            return $this->current->user_contacts()
+                ->with('contacts_type')
+                ->findOrFail($id);
         } else {
-            return $this->current->user_contacts()->get();
+            return $this->current->user_contacts()
+                ->with('contacts_type')
+                ->get();
         }
-    }
-
-    /**
-     * Edits a contact of the current user
-     *
-     * @param UserContactRequest $request
-     * @param $id
-     * @return \App\Models\UserContact|null
-     */
-    public function edit(UserContactRequest $request, $id)
-    {
-        return $this->userContactService->store($request, $id);
     }
 
     /**
@@ -69,5 +62,10 @@ class UserContactController extends Controller
     public function remove($id)
     {
         return response()->json(['response' => $this->userContactRepository->remove($id)], 200);
+    }
+
+    public function getTypes()
+    {
+        return ContactsType::get();
     }
 }

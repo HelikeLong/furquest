@@ -15,8 +15,9 @@ use Illuminate\Http\UploadedFile;
 class UserContactRequest extends FormRequest
 {
     protected $rules = [
-        'contacts_types_id' => 'integer|nullable',
-        'value' => 'string|nullable'
+        'id' => 'array|nullable',
+        'contacts_types_id' => 'array|nullable',
+        'value' => 'array|nullable'
     ];
 
     /**
@@ -39,6 +40,7 @@ class UserContactRequest extends FormRequest
         switch ($this->getMethod()) {
             case 'POST':
             case 'PUT':
+                $this->rules['id'] .= '|required';
                 $this->rules['contacts_types_id'] .= '|required';
                 $this->rules['value'] .= '|required';
                 break;

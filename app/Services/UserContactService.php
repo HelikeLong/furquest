@@ -28,18 +28,22 @@ class UserContactService
      * Saves a contact for the current user
      *
      * @param UserContactRequest $request
-     * @param int $id
      * @return UserContact|null
      */
-    public function store(UserContactRequest $request, $id = 0)
+    public function store(UserContactRequest $request)
     {
-        $userContact = null;
-        if ($request->validated()) {
-            /** @var UserContact $userContact */
-            $userContact = UserContact::firstOrNew(['id' => $id]);
-            $userContact->fill($request->validated());
-            $userContact->user_id = auth()->user()->id;
-            $userContact->save();
+        $userContact = [];
+        if ($data = $request->validated()) {
+            for ($i = 0; $i < count($data['id']); $i++) {
+                /** @var UserContact $userContact */
+                $userContact[$i] = UserContact::firstOrNew(['id' => $data['id'][$i]]);
+                $userContact[$i]->fill([
+                    'contacts_types_id' => $data['contacts_types_id'][$i],
+                    'value' => $data['value'][$i]
+                ]);
+                $userContact[$i]->user_id = auth()->user()->id;
+                $userContact[$i]->save();
+            }
         }
 
         return $userContact;
