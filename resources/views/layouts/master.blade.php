@@ -34,8 +34,8 @@
     <!-- Ladda Button -->
     <link href="{{ asset('node_modules/ladda/dist/ladda.min.css') }}" rel="stylesheet"/>
     <!-- IdealUI -->
-    <link href="http://idealtrends.io/idealui/dist/idealui/idealui.min.css" rel="stylesheet" type="text/css"/>
-    <link href="http://idealtrends.io/idealui/assets/vendor/material-input/css/material-input.css" rel="stylesheet" type="text/css"/>
+    <link href="//idealtrends.io/idealui/dist/idealui/idealui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//idealtrends.io/idealui/assets/vendor/material-input/css/material-input.css" rel="stylesheet" type="text/css"/>
     <!-- App css -->
     <link href="{{asset('paper-dashboard/css/paper-dashboard.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('paper-dashboard/demo/demo.css')}}" rel="stylesheet" type="text/css"/>
