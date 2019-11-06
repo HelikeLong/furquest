@@ -29,6 +29,8 @@
                             <div class="account-content">
                                 <div class="button-container">
                                     <h1>Site em desenvolvimento</h1>
+                                    <h4>Enquanto isso, acompanhe nosso crowdfunding para mais informações sobre o evento:</h4>
+                                    <iframe width="260" height="467" frameborder="0" src="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/card"></iframe>
                                 </div>
                             </div>
                         </div>
