@@ -68,13 +68,11 @@ class UserQuestStepTipRepository extends BaseRepository
             'tip_id' => $nextTip->id
         ]) ) {
             //TODO: Create tip for the active user's guild partners
-            $guildMembers = Guild::with([
-                'users' => function ($query) {
-                    $query->where('user_id', auth()->user()->id);
-                }
-            ])
-            ->first()
-            ->users()->get();
+            $guildMembers = Guild::whereHas('users', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })
+                ->first()
+                ->users()->get();
 
             foreach ($guildMembers as $guildMember) {
                 if ($guildMember->id === auth()->user()->id) {
