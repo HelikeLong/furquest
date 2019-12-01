@@ -158,11 +158,9 @@ class UserQuestStepRepository extends BaseRepository
      */
     public function processFinishStepGuild(UserQuestStep $userQuestStep)
     {
-        $guildMembers = Guild::with([
-                'users' => function ($query) {
-                    $query->where('user_id', auth()->user()->id);
-                }
-            ])
+        $guildMembers = Guild::whereHas('users', function ($query) {
+            $query->where('user_id', auth()->user()->id);
+        })
             ->first()
             ->users()->get();
 
