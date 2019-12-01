@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.png')}}">
-    <link href="http://idealtrends.io/idealui/assets/vendor/material-input/css/material-input.css" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('greeva/dist/css/app.css')}}" rel="stylesheet"/>
+    <link href="//idealtrends.io/idealui/assets/vendor/material-input/css/material-input.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/login/login.css')}}" rel="stylesheet"/>
 
     <title>{{ env('APP_NAME') }}</title>
@@ -29,6 +28,8 @@
                             <div class="account-content">
                                 <div class="button-container">
                                     <h1>Site em desenvolvimento</h1>
+                                    <h4>Enquanto isso, acompanhe nosso crowdfunding para mais informações sobre o evento:</h4>
+                                    <iframe width="260" height="467" frameborder="0" src="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/card"></iframe>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
 
 @section('css')
     <link href="{{ vAsset('css/dashboard/index.css') }}" rel="stylesheet" />
-    <link href="http://idealtrends.io/idealui/assets/vendor/exploding-tiles/exploding-tiles.css" rel="stylesheet" />
+    <link href="//idealtrends.io/idealui/assets/vendor/exploding-tiles/exploding-tiles.css" rel="stylesheet" />
 @endsection
 
 @section('scripts')
