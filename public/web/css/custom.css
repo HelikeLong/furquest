@@ -38,7 +38,7 @@ body {
     .menu-link {
         display: none !important;
     }
-    .menu-link.mobile, #banner .more {
+    .menu-link.mobile {
         display: block !important;
     }
 }
@@ -115,4 +115,44 @@ body {
 
 #banner h2:before, #banner h2:after {
     display: none;
+}
+
+.button.cta {
+    background-color: #F2941B;
+}
+
+.wrapper.style2 {
+    background-color: #5B56C2;
+}
+.spotlight .content h2, .features li h3 {
+    font-family: 'Atma', cursive;
+}
+
+.wrapper.style3 {
+    background-color: #31AB48;
+}
+.features li {
+    transition: .3s;
+}
+.features li:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+.features li:nth-child(1) {
+    background-color: #2fa545;
+}
+.features li:nth-child(2) {
+    background-color: #2e9f43;
+}
+.features li:nth-child(3) {
+    background-color: #2c9940;
+}
+.features li:nth-child(4) {
+    background-color: #2a933e;
+}
+.features li:nth-child(5) {
+    background-color: #288d3b;
+}
+.features li:nth-child(6) {
+    background-color: #278739;
 }
