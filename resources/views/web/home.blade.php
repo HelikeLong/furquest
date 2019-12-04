@@ -26,34 +26,39 @@
     <!-- Header -->
     <header id="header" class="alt">
         <h1>
-            <a href="index.html">
+            <a href="{{ route('site.index') }}">
                 <img src="{{ vAsset('images/logo-negative.png') }}" alt="FurQuest" width="55px">
             </a>
         </h1>
         <nav id="nav">
             <ul>
-                <li class="menu-link"><a href="index.html">Home <i class="fa fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="generic.html">Generic</a></li>
-                        <li><a href="elements.html">Elements</a></li>
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">Log In</a></li>
-                    </ul>
-                </li>
-                <li class="menu-link"><a href="generic.html">Generic</a></li>
-                <li class="menu-link"><a href="elements.html">Elements</a></li>
-                <li class="menu-link"><a href="#">Sign Up</a></li>
-                <li class="menu-link"><a href="#">Log In</a></li>
+                <li class="menu-link"><a href="{{ route('site.index') }}">Home</a></li>
+{{--                <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>--}}
+{{--                    <ul class="submenu">--}}
+{{--                        <li><a href="index.html">Home</a></li>--}}
+{{--                        <li><a href="generic.html">Generic</a></li>--}}
+{{--                        <li><a href="elements.html">Elements</a></li>--}}
+{{--                        <li><a href="#">Sign Up</a></li>--}}
+{{--                        <li><a href="#">Log In</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="menu-link"><a href="#">Sign Up</a></li>--}}
+                <li class="menu-link"><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>
+
                 <li class="special menu-link mobile">
                     <a href="#menu" class="menuToggle"><span>Menu</span></a>
                     <div id="menu">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="generic.html">Generic</a></li>
-                            <li><a href="elements.html">Elements</a></li>
-                            <li><a href="#">Sign Up</a></li>
-                            <li><a href="#">Log In</a></li>
+                            <li><a href="{{ route('site.index') }}">Home</a></li>
+                            <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="generic.html">Generic</a></li>
+                                    <li><a href="elements.html">Elements</a></li>
+                                    <li><a href="#">Sign Up</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>
                         </ul>
                     </div>
                 </li>
@@ -64,15 +69,15 @@
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-            <h2>
+            <h1 class="font-furquest">
                 <img src="{{ vAsset('images/logo-negative-typo.png') }}" alt="FurQuest" width="250px">
-            </h2>
+            </h1>
             <p>Evento Furry de Caçada ao Tesouro em ARG.</p>
             <ul class="actions special">
                 <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button primary cta">Quero Participar!</a></li>
             </ul>
         </div>
-        <a href="#one" class="more scrolly">Conheça</a>
+        <a href="#two" class="more scrolly">Conheça</a>
     </section>
 
     <!-- Two -->
@@ -82,7 +87,7 @@
 
             </div>
             <div class="content">
-                <h2>Venha experimentar a nostalgia<br />
+                <h2 class="font-furquest">Venha experimentar a nostalgia<br />
                     de uma caçada ao tesouro</h2>
                 <p>Com um toque moderno.<br/>O ARG, ou "Jogo de Realidade Alternativa" em português, irá lhe proporcionar uma experiência completamente nova!</p>
             </div>
@@ -92,7 +97,7 @@
 
             </div>
             <div class="content">
-                <h2>Desevende enigmas com seus<br />
+                <h2 class="font-furquest">Desevende enigmas com seus<br />
                     amigos e conheça mais sobre SP</h2>
                 <p>Os participantes serão separados em trios, chamados de guildas, para desenvendar os enigmas da caçada,
                     com o auxílio de dicas, enquanto conhecem e aprendem mais sobre os locais onde o evento será realizado. </p>
@@ -103,7 +108,7 @@
 
             </div>
             <div class="content">
-                <h2>E concorra a mais de R$1000<br />
+                <h2 class="font-furquest">E concorra a mais de R$1000<br />
                     em prêmios exclusivos</h2>
                 <p>Nossos baús estaram recheados de prêmios como commissions com grandes artistas, incríveis prints
                     feitas especialmente para o evento, pelúcias, canecas e muito outros brindes exclusivos!</p>
@@ -115,33 +120,68 @@
     <section id="three" class="wrapper style3 special">
         <div class="inner">
             <header class="major">
-                <h2>Accumsan mus tortor nunc aliquet</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-                    fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+                <h2 class="font-furquest">Participe dessa grande caçada!</h2>
+                <p>Se inscreva agora mesmo para participar de nossa caçada.<br />
+                    Você pode escolher entre os níveis de inscrição abaixo:</p>
             </header>
             <ul class="features">
-                <li class="icon fa-paper-plane">
-                    <h3>Aventureiro - R$40</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                <li class="icon solid fa-dice-d6">
+                    <h3 class="font-furquest">Aventureiro - R$40</h3>
+                    <ul>
+                        <li>Badge</li>
+                        <li>Cordão de Badge Simples</li>
+                        <li>Bottoms e Adesivos</li>
+                    </ul>
+
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=4000" class="button fit">Quero esse!</a>
                 </li>
-                <li class="icon solid fa-laptop">
-                    <h3>Super Aventureiro - R$55</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                <li class="icon solid fa-dice-d20">
+                    <h3 class="font-furquest">Super Aventureiro - R$55</h3>
+                    <ul>
+                        <li>Badge Exclusiva Plastificada</li>
+                        <li>Cordão de Badge Especial</li>
+                        <li>Bottoms e Adesivos</li>
+                        <li>Bottom Exclusivo</li>
+                        <li>Mochila Especial</li>
+                    </ul>
+
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=5500" class="button fit">Quero esse!</a>
                 </li>
-                <li class="icon solid fa-code">
-                    <h3>Guilda - R$150</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                <li class="icon solid fa-user-friends">
+                    <h3 class="font-furquest">Guilda - R$150</h3>
+                    <ul>
+                        <li><strong>Vale três inscrições</strong></li>
+                        <li>Poder escolher os membros da Guilda</li>
+                        <li>Nome Guilda</li>
+                        <li>Badge Guilda</li>
+                        <li>Cordão de Badge Simples</li>
+                        <li>Bottoms e Adesivos</li>
+                    </ul>
+
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=15000" class="button fit">Quero esse!</a>
                 </li>
-                <li class="icon solid fa-headphones-alt">
-                    <h3>Super Guilda - R$195</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                <li class="icon solid fa-users">
+                    <h3 class="font-furquest">Super Guilda - R$195</h3>
+                    <ul>
+                        <li><strong>Vale três inscrições</strong></li>
+                        <li>Poder escolher os membros da Guilda</li>
+                        <li>Nome Guilda</li>
+                        <li>Bandeira da Guilda</li>
+                        <li>Badge Guilda Exclusiva Plastificada</li>
+                        <li>Cordão de Badge Especial</li>
+                        <li>Bottoms e Adesivos</li>
+                        <li>Bottom Exclusivo</li>
+                        <li>Mochila Especial</li>
+                    </ul>
+
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=19500" class="button fit">Quero esse!</a>
                 </li>
             </ul>
 
-            <header class="major">
-                <h2>Accumsan mus tortor nunc aliquet</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-                    fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+            <header class="major" style="margin-top: 70px">
+                <h2 class="font-furquest">Mas se você quiser só os brindes...</h2>
+                <p>Talvez você tenha chego tarde ou não queira participar da caçada<br />
+                    mas gostaria de receber os nossos brindes exclusivos, temos a solução pra você:</p>
             </header>
             <ul class="features">
                 <li style="display:none;"></li>
@@ -149,14 +189,26 @@
                 <li style="display:none;"></li>
                 <li style="display:none;"></li>
                 <li class="icon fa-heart">
-                    <h3>NPC - R$15</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                    <h3 class="font-furquest">NPC - R$15</h3>
+                    <ul>
+                        <li>Badge</li>
+                        <li>Cordão de Badge Simples</li>
+                        <li>Bottoms e Adesivos</li>
+                    </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button primary cta">Quero esse!</a>
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=1500" class="button fit">Quero esse!</a>
                 </li>
-                <li class="icon fa-flag">
-                    <h3>Super NPC - R$30</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                <li class="icon solid fa-heart">
+                    <h3 class="font-furquest">Super NPC - R$30</h3>
+                    <ul>
+                        <li>Badge Exclusiva Plastificada</li>
+                        <li>Cordão de Badge Especial</li>
+                        <li>Bottoms e Adesivos</li>
+                        <li>Bottom Exclusivo</li>
+                        <li>Mochila Especial</li>
+                    </ul>
+
+                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=3000" class="button fit">Quero esse!</a>
                 </li>
             </ul>
         </div>
@@ -166,14 +218,13 @@
     <section id="cta" class="wrapper style4">
         <div class="inner">
             <header>
-                <h2>Arcue ut vel commodo</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
+                <h2 class="font-furquest">FurQuest - Pirates 'n Gears</h2>
+                <p>Venha participar da primeira edição do FurQuest.<br/>Realizaremos-a no Parque Ibirapuera no dia 26 de Janeiro de 2020.</p>
             </header>
-            <ul class="actions stacked">
-                <li><a href="#" class="button fit primary">Activate</a></li>
-                <li><a href="#" class="button fit">Learn More</a></li>
-            </ul>
         </div>
+        <ul class="actions special">
+            <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button fit primary">Quero Participar!</a></li>
+        </ul>
     </section>
 
     <!-- Footer -->

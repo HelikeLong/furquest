@@ -2554,7 +2554,7 @@ input, select, textarea {
 		width: 100%;
 	}
 
-		.features li {
+		.features>li {
 			padding: 4em 4em 2em 6em ;
 			display: block;
 			position: relative;
@@ -2562,47 +2562,47 @@ input, select, textarea {
 			width: 50%;
 		}
 
-			.features li:nth-child(1) {
+			.features>li:nth-child(1) {
 				background-color: rgba(0, 0, 0, 0.035);
 			}
 
-			.features li:nth-child(2) {
+			.features>li:nth-child(2) {
 				background-color: rgba(0, 0, 0, 0.07);
 			}
 
-			.features li:nth-child(3) {
+			.features>li:nth-child(3) {
 				background-color: rgba(0, 0, 0, 0.105);
 			}
 
-			.features li:nth-child(4) {
+			.features>li:nth-child(4) {
 				background-color: rgba(0, 0, 0, 0.14);
 			}
 
-			.features li:nth-child(5) {
+			.features>li:nth-child(5) {
 				background-color: rgba(0, 0, 0, 0.175);
 			}
 
-			.features li:nth-child(6) {
+			.features>li:nth-child(6) {
 				background-color: rgba(0, 0, 0, 0.21);
 			}
 
-			.features li:nth-child(7) {
+			.features>li:nth-child(7) {
 				background-color: rgba(0, 0, 0, 0.245);
 			}
 
-			.features li:nth-child(8) {
+			.features>li:nth-child(8) {
 				background-color: rgba(0, 0, 0, 0.28);
 			}
 
-			.features li:nth-child(9) {
+			.features>li:nth-child(9) {
 				background-color: rgba(0, 0, 0, 0.315);
 			}
 
-			.features li:nth-child(10) {
+			.features>li:nth-child(10) {
 				background-color: rgba(0, 0, 0, 0.35);
 			}
 
-			.features li:before {
+			.features>li:before {
 				display: block;
 				color: #00ffcc;
 				position: absolute;
@@ -2611,30 +2611,30 @@ input, select, textarea {
 				font-size: 1.5em;
 			}
 
-			.features li:nth-child(1) {
+			.features>li:nth-child(1) {
 				border-top-left-radius: 3px;
 			}
 
-			.features li:nth-child(2) {
+			.features>li:nth-child(2) {
 				border-top-right-radius: 3px;
 			}
 
-			.features li:nth-last-child(1) {
+			.features>li:nth-last-child(1) {
 				border-bottom-right-radius: 3px;
 			}
 
-			.features li:nth-last-child(2) {
+			.features>li:nth-last-child(2) {
 				border-bottom-left-radius: 3px;
 			}
 
 			@media screen and (max-width: 980px) {
 
-				.features li {
+				.features>li {
 					padding: 3em 2em 1em 2em ;
 					text-align: center;
 				}
 
-					.features li:before {
+					.features>li:before {
 						left: 0;
 						margin: 0 0 1em 0;
 						position: relative;
@@ -2645,14 +2645,14 @@ input, select, textarea {
 
 			@media screen and (max-width: 736px) {
 
-				.features li {
+				.features>li {
 					padding: 3em 0 1em 0 ;
 					background-color: transparent !important;
 					border-top: solid 2px #fff;
 					width: 100%;
 				}
 
-					.features li:first-child {
+					.features>li:first-child {
 						border-top: 0;
 					}
 
@@ -2969,7 +2969,7 @@ input, select, textarea {
 
 			@media screen and (max-width: 736px) {
 
-				.wrapper.style1 .features li {
+				.wrapper.style1 .features>li {
 					border-top-color: rgba(0, 0, 0, 0.125);
 				}
 
@@ -3132,7 +3132,7 @@ input, select, textarea {
 
 			@media screen and (max-width: 736px) {
 
-				.wrapper.style3 .features li {
+				.wrapper.style3 .features>li {
 					border-top-color: rgba(0, 0, 0, 0.125);
 				}
 
@@ -3295,7 +3295,7 @@ input, select, textarea {
 
 			@media screen and (max-width: 736px) {
 
-				.wrapper.style5 .features li {
+				.wrapper.style5 .features>li {
 					border-top-color: #dfdfdf;
 				}
 
