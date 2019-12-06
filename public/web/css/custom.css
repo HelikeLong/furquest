@@ -179,3 +179,18 @@ body {
     bottom: 2.5em;
     left: 3.2em;
 }
+
+.wrapper.style4 {
+    text-align: center;
+}
+.wrapper.style4 img {
+    width: 250px;
+    padding: 0 15px;
+}
+.wrapper.style4 .inner {
+    margin-top: 20px;
+    text-align: center;
+}
+.wrapper.style4 .inner header {
+    width: 100% !important;
+}

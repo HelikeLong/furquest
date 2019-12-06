@@ -32,7 +32,7 @@
         </h1>
         <nav id="nav">
             <ul>
-                <li class="menu-link"><a href="{{ route('site.index') }}">Home</a></li>
+{{--                <li class="menu-link"><a href="{{ route('site.index') }}">Home</a></li>--}}
 {{--                <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>--}}
 {{--                    <ul class="submenu">--}}
 {{--                        <li><a href="index.html">Home</a></li>--}}
@@ -43,25 +43,25 @@
 {{--                    </ul>--}}
 {{--                </li>--}}
 {{--                <li class="menu-link"><a href="#">Sign Up</a></li>--}}
-                <li class="menu-link"><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>
+{{--                <li class="menu-link"><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>--}}
 
-                <li class="special menu-link mobile">
-                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
-                    <div id="menu">
-                        <ul>
-                            <li><a href="{{ route('site.index') }}">Home</a></li>
-                            <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="generic.html">Generic</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                    <li><a href="#">Sign Up</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>
-                        </ul>
-                    </div>
-                </li>
+{{--                <li class="special menu-link mobile">--}}
+{{--                    <a href="#menu" class="menuToggle"><span>Menu</span></a>--}}
+{{--                    <div id="menu">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('site.index') }}">Home</a></li>--}}
+{{--                            <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>--}}
+{{--                                <ul class="submenu">--}}
+{{--                                    <li><a href="index.html">Home</a></li>--}}
+{{--                                    <li><a href="generic.html">Generic</a></li>--}}
+{{--                                    <li><a href="elements.html">Elements</a></li>--}}
+{{--                                    <li><a href="#">Sign Up</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+{{--                            <li><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
             </ul>
         </nav>
     </header>
@@ -215,7 +215,8 @@
     </section>
 
     <!-- CTA -->
-    <section id="cta" class="wrapper style4">
+    <section id="cta" class="wrapper style4 text-center">
+        <img src="{{ vAsset('web/images/logo-piratesngears.png') }}" alt="FurQuest - Pirates 'n Gears">
         <div class="inner">
             <header>
                 <h2 class="font-furquest">FurQuest - Pirates 'n Gears</h2>
