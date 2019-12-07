@@ -218,10 +218,7 @@
     <section id="cta" class="wrapper style4 text-center">
         <img src="{{ vAsset('web/images/logo-piratesngears.png') }}" alt="FurQuest - Pirates 'n Gears">
         <div class="inner">
-            <header>
-                <h2 class="font-furquest">FurQuest - Pirates 'n Gears</h2>
-                <p>Venha participar da primeira edição do FurQuest.<br/>Realizaremos-a no Parque Ibirapuera no dia 26 de Janeiro de 2020.</p>
-            </header>
+            <p>Venha participar da primeira edição do FurQuest.<br/>Realizaremos-a no Parque Ibirapuera no dia 26 de Janeiro de 2020.</p>
         </div>
         <ul class="actions special">
             <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button fit primary">Quero Participar!</a></li>
