@@ -1,0 +1,222 @@
+body {
+    background: #88498D !important;
+}
+
+.font-furquest {
+    font-family: 'Atma', cursive;
+}
+
+#myVideo {
+    position: fixed;
+    z-index: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0.5;
+}
+
+#banner:after {
+    background: #88498D;
+}
+
+#page-wrapper, body.is-mobile.landing #banner {
+    position: relative;
+    z-index: 1;
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)), url(../../images/banner.jpg) !important;
+}
+
+#header {
+    transition: background-color 0.2s ease;
+    background: #88498D;
+    height: 4.5em;
+    line-height: 4.5em;
+}
+#header h1 {
+    top: 7px;
+}
+#header h1 a img {
+    width: 3.5em;
+}
+@media screen and (max-width: 735px) {
+    #header h1 {
+        top: 12px;
+    }
+}
+
+.menu-link.mobile {
+    display: none !important;
+}
+@media screen and (max-width: 736px) {
+    .menu-link {
+        display: none !important;
+    }
+    .menu-link.mobile {
+        display: block !important;
+    }
+}
+
+#header.alt {
+    position: absolute;
+}
+.alt .menu-link {
+    display: none !important;
+}
+.alt .menu-link.mobile {
+    display: block !important;
+}
+#header nav > ul > li > a.menuToggle {
+    padding: 1em 2em 0;
+    height: 65px;
+}
+#header nav > ul > li > a.menuToggle span {
+    position: absolute;
+    top: 0em;
+    right: 4.5em;
+}
+
+#header nav > ul > li > ul.submenu {
+    position: absolute;
+    left: 0;
+    top: 150%;
+    width: 300px;
+    text-align: left;
+    padding-left: 0;
+    background-color: #1d242a;
+    z-index: 9999;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#header nav > ul > li > ul.submenu li:first-child {
+    border-top: none;
+}
+#header nav > ul > li > ul.submenu > li {
+    border-top: 1px solid #333333;
+    list-style: none;
+    transition: .3s;
+}
+#header nav > ul > li > ul.submenu > li:hover {
+    background: #88498D;
+}
+#header nav > ul > li > ul.submenu > li > a {
+    border-bottom: 0;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 0 0 20px;
+    line-height: 45px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#header nav > ul > li:hover > ul.submenu {
+    top: 100%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    visibility: visible;
+}
+
+#banner h2:before, #banner h2:after {
+    display: none;
+}
+
+.button.cta {
+    background-color: #F2941B;
+}
+
+.wrapper.style2 {
+    background-color: #5B56C2;
+}
+
+.wrapper.style3 {
+    background-color: #FEFEFE;
+}
+.wrapper.style3 header.major h2 {
+    color: #111;
+}
+.wrapper.style3 header.major p {
+    color: #333;
+}
+
+.features>li {
+    padding: 4em 6em 4em 6em;
+    margin: .5em;
+    width: calc(50% - 1em);
+    color: #F5f5f5;
+    transition: .3s;
+}
+.features>li:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+.features>li:nth-child(1) {
+    background-color: #2fa545 !important;
+}
+.features>li:nth-child(2) {
+    background-color: #2e9f43 !important;
+}
+.features>li:nth-child(3) {
+    background-color: #2c9940 !important;
+}
+.features>li:nth-child(4) {
+    background-color: #2a933e !important;
+}
+.features>li:nth-child(5) {
+    background-color: #288d3b !important;
+}
+.features>li:nth-child(6) {
+    background-color: #278739 !important;
+}
+.features>li:before {
+    color: #FFCC35;
+}
+.features>li a.button.fit {
+    position: absolute;
+    bottom: 2.5em;
+    left: 3.2em;
+}
+
+.wrapper.style4 {
+    text-align: center;
+}
+.wrapper.style4 img {
+    width: 320px;
+    padding: 0 15px;
+}
+.wrapper.style4 .inner {
+    margin-top: 20px;
+    text-align: center;
+}
+.wrapper.style4 .inner p {
+    display: block;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper.style3.special {
+        padding: 3em 1em 1em 1em;
+    }
+    .features {
+        margin: 0;
+    }
+    .features>li {
+        width: 100%;
+        margin: 0;
+        padding: 2em;
+    }
+    .features>li>ul{
+        list-style: none;
+    }
+    .features>li a.button.fit {
+        position: initial;
+    }
+}
