@@ -9,6 +9,7 @@
     <title>FurQuest | Evento Furry de Caçada ao Tesouro ARG</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="wot-verification" content="6aadc2f4d75dc5e3bab8"/>
 
     <link href="https://fonts.googleapis.com/css?family=Atma:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ vAsset('web/css/main.css') }}" />
