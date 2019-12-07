@@ -239,6 +239,9 @@
             <li>&copy; FurQuest</li><li>Um projeto <a href="https://crystalhorns.com/">CrystalHorns</a></li>
         </ul>
         <sup style="opacity: .5;"><sup><sup>Design: <a href="http://html5up.net">HTML5 UP</a></sup></sup></sup>
+        <sup style="opacity: .5;"><sup><sup>
+            <a href="https://app.termly.io/document/privacy-policy/6a5ce351-66cc-48f9-9287-7add09d49747">Politica de Privacidade</a>
+        </sup></sup></sup>
     </footer>
 
 </div>
