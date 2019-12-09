@@ -8,13 +8,20 @@ body {
 
 #myVideo {
     position: fixed;
-    z-index: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    width: auto;
     min-width: 100%;
+    height: auto;
     min-height: 100%;
-    opacity: 0.5;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -1;
+    opacity: .5;
 }
 
+#banner {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2NkwAIYyRb0BelE1w4WBAAK9wCgvT582AAAAABJRU5ErkJggg==) repeat;
+}
 #banner:after {
     background: #88498D;
 }
@@ -22,7 +29,8 @@ body {
 #page-wrapper, body.is-mobile.landing #banner {
     position: relative;
     z-index: 1;
-    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)), url(../../images/banner.jpg) !important;
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2NkwAIYyRb0BelE1w4WBAAK9wCgvT582AAAAABJRU5ErkJggg==) !important;
+    background-repeat: repeat;
 }
 
 #header {
@@ -187,6 +195,7 @@ body {
 
 .wrapper.style4 {
     text-align: center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2NkwAIYyRb0BelE1w4WBAAK9wCgvT582AAAAABJRU5ErkJggg==) repeat;
 }
 .wrapper.style4 img {
     width: 320px;
