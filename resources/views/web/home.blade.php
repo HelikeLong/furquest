@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ vAsset('web/css/custom.css') }}" />
 </head>
 <body class="landing is-preload">
-<video autoplay muted loop id="myVideo" poster="{{ asset('web/videos/video_login.png') }}">
+<video autoplay muted loop id="myVideo">
     <source src="{{ vAsset('web/videos/video_login.mp4') }}"  type="video/mp4">
 </video>
 
