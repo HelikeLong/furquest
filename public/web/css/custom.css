@@ -137,6 +137,22 @@ body {
     display: none;
 }
 
+.spotlight {
+    min-height: 270px;
+}
+.spotlight .image {
+    text-align: center;
+}
+@media screen and (max-width: 980px) {
+    .spotlight .image {
+        width: 100%;
+        margin-top: 50px;
+    }
+    .spotlight .content {
+        padding: 3em 3em 2em 3em;
+    }
+}
+
 .button.cta {
     background-color: #F2941B;
 }
