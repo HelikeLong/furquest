@@ -7,6 +7,8 @@
 <html lang="pt-br">
 <head>
     <title>FurQuest | Evento Furry de Caçada ao Tesouro ARG</title>
+    <link rel="shortcut icon" href="{{ vAsset('web/images/favicon.png') }}" type="image/x-icon" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="wot-verification" content="6aadc2f4d75dc5e3bab8"/>
@@ -14,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Atma:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ vAsset('web/css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ vAsset('web/css/noscript.css') }}" /></noscript>
-    <link rel="stylesheet" href="{{ vAsset('web/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ vAsset('web/css/home.css') }}" />
 </head>
 <body class="landing">
 
@@ -33,36 +35,38 @@
         </h1>
         <nav id="nav">
             <ul>
-{{--                <li class="menu-link"><a href="{{ route('site.index') }}">Home</a></li>--}}
-{{--                <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>--}}
-{{--                    <ul class="submenu">--}}
-{{--                        <li><a href="index.html">Home</a></li>--}}
-{{--                        <li><a href="generic.html">Generic</a></li>--}}
-{{--                        <li><a href="elements.html">Elements</a></li>--}}
-{{--                        <li><a href="#">Sign Up</a></li>--}}
-{{--                        <li><a href="#">Log In</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
+                <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>
+                <li class="menu-link"><a>Conheça mais <i class="fa fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('site.about.furquest') }}">O que é o Furquest?</a></li>
+                        <li><a href="{{ route('site.about.arg') }}">O que é ARG?</a></li>
+                        <li><a href="{{ route('site.about.furry') }}">O que é Furry?</a></li>
+                    </ul>
+                </li>
+                <li class="menu-link"><a href="{{ route('site.contact') }}">Contato</a></li>
+
+                <li class="special menu-link mobile">
+                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>
+                            <li class="menu-link"><a>Conheça mais <i class="fa fa-chevron-down"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="{{ route('site.about.furquest') }}">O que é o Furquest?</a></li>
+                                    <li><a href="{{ route('site.about.arg') }}">O que é ARG?</a></li>
+                                    <li><a href="{{ route('site.about.furry') }}">O que é Furry?</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-link"><a href="{{ route('site.contact') }}">Contato</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+
 {{--                <li class="menu-link"><a href="#">Sign Up</a></li>--}}
 {{--                <li class="menu-link"><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>--}}
 
-{{--                <li class="special menu-link mobile">--}}
-{{--                    <a href="#menu" class="menuToggle"><span>Menu</span></a>--}}
-{{--                    <div id="menu">--}}
-{{--                        <ul>--}}
-{{--                            <li><a href="{{ route('site.index') }}">Home</a></li>--}}
-{{--                            <li class="menu-link"><a href="generic.html">Generic<i class="fa fa-chevron-down"></i></a>--}}
-{{--                                <ul class="submenu">--}}
-{{--                                    <li><a href="index.html">Home</a></li>--}}
-{{--                                    <li><a href="generic.html">Generic</a></li>--}}
-{{--                                    <li><a href="elements.html">Elements</a></li>--}}
-{{--                                    <li><a href="#">Sign Up</a></li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-{{--                            <li><a href="https://app.furquest.crystalhorns.com">Acessar App</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </li>--}}
+
             </ul>
         </nav>
     </header>
@@ -266,7 +270,7 @@
         </ul>
         <sup style="opacity: .5;"><sup><sup>Design: <a href="http://html5up.net">HTML5 UP</a></sup></sup></sup>
         <sup style="opacity: .5;"><sup><sup>
-            <a href="https://app.termly.io/document/privacy-policy/6a5ce351-66cc-48f9-9287-7add09d49747">Politica de Privacidade</a>
+            | <a href="https://app.termly.io/document/privacy-policy/6a5ce351-66cc-48f9-9287-7add09d49747">Politica de Privacidade</a>
         </sup></sup></sup>
     </footer>
 

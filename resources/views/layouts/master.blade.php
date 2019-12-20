@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>SecretaryBird</title>
+    <title>FurQuest</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

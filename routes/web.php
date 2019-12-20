@@ -95,5 +95,11 @@ Route::group(['namespace' => 'Front', 'middleware' => [], 'as' => 'site.'], func
 
     // Base do site
     Route::get('/', 'SiteController@index')->name('index');
+    Route::group(['namespace' => 'Front', 'middleware' => [], 'as' => 'about.', 'prefix' => '/sobre'], function () {
+        Route::get('/o-que-e-furquest', function () { return view('web.about.furquest'); })->name('furquest');
+        Route::get('/o-que-e-arg', function () { return view('web.about.arg'); })->name('arg');
+        Route::get('/o-que-e-furry', function () { return view('web.about.furry'); })->name('furry');
+    });
+    Route::get('/contato', function () { return view('web.contact'); })->name('contact');
 
 });

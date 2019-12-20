@@ -58,7 +58,7 @@ body {
     .menu-link {
         display: none !important;
     }
-    .menu-link.mobile {
+    .menu-link.mobile, #menu .menu-link {
         display: block !important;
     }
 }
@@ -84,7 +84,7 @@ body {
 
 #header nav > ul > li > ul.submenu {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 150%;
     width: 300px;
     text-align: left;
@@ -131,6 +131,10 @@ body {
     filter: alpha(opacity=100);
     opacity: 1;
     visibility: visible;
+}
+#menu ul ul.submenu {
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 #banner h2:before, #banner h2:after {
