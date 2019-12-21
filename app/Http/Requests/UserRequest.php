@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         'social_name' => 'string|nullable',
         'name' => 'string|nullable',
         'species' => 'string|nullable',
-        'photo' => 'nullable|image|mimes:jpeg,jpg,png',
+        'photo' => 'nullable',
         'bio' => 'string|nullable',
         'document' => 'string|nullable',
         'document_type' => 'string|nullable',

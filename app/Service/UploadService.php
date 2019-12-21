@@ -55,19 +55,39 @@ class UploadService
     }
 
     /**
+     * @param UploadedFile|UploadedFile[] $Image
+     * @param $Name
+     * @param $Folder
+     * @param bool $removeOld
+     * @return bool
+     */
+    public function base64($Image, $Name, $Folder, $removeOld = false)
+    {
+        $this->Name = $Name;
+        $this->Folder = $Folder;
+        $Image = is_array($Image) ? $Image : [$Image];
+        foreach ($Image as $File) {
+            $this->setFileName($File, $removeOld, false, true);
+        }
+
+        return true;
+    }
+
+    /**
      * Checks if the file name is in use, if it is, creates a new hashed name
      * @param UploadedFile $File
      * @param bool $removeOld
      * @param bool $flagSubFolder
+     * @param $base64
      */
-    private function setFileName($File, $removeOld = false,  $flagSubFolder = false)
+    private function setFileName($File, $removeOld = false,  $flagSubFolder = false, $base64 = false)
     {
         $SubFolder = '';
         $Name = Str::slug($this->Name);
         if ($flagSubFolder) {
             $SubFolder = $Name.'/';
         }
-        $file_extesion = $File->extension();
+        $file_extesion = $base64 ? 'png' : $File->extension();
         $FileName = "{$Name}" . ".{$file_extesion}";
         if (Storage::disk('public')->exists($this->Folder . '/' . $SubFolder . $FileName)) {
             if ($removeOld) {
@@ -76,7 +96,11 @@ class UploadService
                 $FileName = "{$Name}-" . substr(md5(bcrypt($Name)), 0, 5) . ".{$file_extesion}";
             }
         }
-        $this->UploadImage($File, $SubFolder . $FileName);
+        if ($base64) {
+            $this->uploadImageBase64($File, $this->Folder . '/' . $SubFolder, $FileName);
+        } else {
+            $this->UploadImage($File, $SubFolder . $FileName);
+        }
     }
 
     /**
@@ -137,6 +161,24 @@ class UploadService
                 imagedestroy($NewImage);
             }
         }
+    }
+
+    public function uploadImageBase64($File, $path, $FileName)
+    {
+        $bin = base64_decode($File);
+        $im = imageCreateFromString($bin);
+
+        if (!$im) {
+            flash('Base64 value is not a valid image.')->error();
+        }
+
+        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix() . $path;
+        if (!imagepng($im, $path.$FileName, 0)) {
+            flash('Algumas imagens não puderam ser enviadas, verifique.')->error();
+        }
+
+        $this->Uploaded[] = $FileName;
+        imagedestroy($im);
     }
 
     /**

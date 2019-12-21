@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -68,14 +70,13 @@ class UserController extends Controller
     public function editPhoto(UserRequest $request)
     {
         $upload = new UploadService();
+        $photo = str_replace('data:image/png;base64,', '', $request->photo);
 
         $userId = $this->current->id;
-        $upload->Image(
-            [$request->photo],
+        $upload->base64(
+            [$photo],
             md5($userId),
-            getimagesize($request->photo)[0],
             'users/'.$userId,
-            [250],
             true
         );
 
@@ -85,5 +86,11 @@ class UserController extends Controller
         }
 
         return ['photo' => $this->current->photo];
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $this->current->password = Hash::make($request->newPassword);
+        $this->current->save();
     }
 }

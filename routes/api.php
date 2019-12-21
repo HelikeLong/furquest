@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api', \Barryvdh\Cors\
             Route::get('/', 'UserController@current')->name('get');
             Route::put('/edit', 'UserController@edit')->name('edit');
             Route::patch('/photo', 'UserController@editPhoto')->name('editPhoto');
+            Route::put('/password', 'UserController@changePassword')->name('changePassword');
 
             Route::group(['prefix' => '/contacts', 'as' => 'contacts.'], function () {;
                 Route::post('/save', 'UserContactController@save')->name('save');
