@@ -1,5 +1,5 @@
 .font-furquest {
-    font-family: 'Atma', cursive;
+    font-family: 'Atma', sans-serif;
 }
 
 #header {
@@ -128,4 +128,23 @@
     font-size: 1.5em;
     line-height: 1.9em;
     text-transform: none;
+}
+
+.social-medias ul.icons li {
+    display: block;
+    font-size: 24px;
+    font-family: Atma, sans-serif;
+    padding-bottom: 10px;
+}
+.social-medias ul.icons li a:before {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 5px;
+}
+.social-medias ul.icons li a span {
+
 }
