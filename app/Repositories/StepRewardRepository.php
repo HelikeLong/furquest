@@ -46,7 +46,7 @@ class StepRewardRepository extends BaseRepository
                 'step_origin_id' => $userQuestStep->step_id
             ])->first();
 
-            if ($nextStep) {
+            if ($nextStep && $nextStep->step_dest_id) {
                 $stepRewards['nextStep'] = UserQuestStep::where([
                     'user_quest_id' => $quest,
                     'step_id' => $nextStep->step_dest_id
