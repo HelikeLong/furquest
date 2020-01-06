@@ -170,7 +170,7 @@ class UserQuestStepRepository extends BaseRepository
             }
             $memberQuestStep = UserQuest::where([
                 'user_id' => $guildMember->id,
-                'quest_route_id' => $userQuestStep->user_quest()->quest_route_id
+                'quest_route_id' => $userQuestStep->user_quest->quest_route_id
             ])->first()
             ->user_quest_steps()
             ->where('step_id', $userQuestStep->step()->id)
