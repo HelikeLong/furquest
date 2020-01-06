@@ -137,10 +137,10 @@ class UserQuestStepRepository extends BaseRepository
             'step_origin_id' => $userQuestStep->step_id
         ])->first();
 
-        if ($nextStep && $nextStep->step_dest()) {
+        if ($nextStep && $nextStep->step_dest) {
             // Start next step for the user
             $new_userQuestStep = new UserQuestStep();
-            $new_userQuestStep->step_id = $nextStep->step_dest()->id;
+            $new_userQuestStep->step_id = $nextStep->step_dest->id;
             $new_userQuestStep->user_quest_id = $userQuest->id;
             $new_userQuestStep->save();
 
