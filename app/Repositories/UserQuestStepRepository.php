@@ -137,10 +137,10 @@ class UserQuestStepRepository extends BaseRepository
             'step_origin_id' => $userQuestStep->step_id
         ])->first();
 
-        if ($nextStep) {
+        if ($nextStep && $nextStep->step_dest()) {
             // Start next step for the user
             $new_userQuestStep = new UserQuestStep();
-            $new_userQuestStep->step_id = $nextStep->step_dest->id;
+            $new_userQuestStep->step_id = $nextStep->step_dest()->id;
             $new_userQuestStep->user_quest_id = $userQuest->id;
             $new_userQuestStep->save();
 
@@ -170,10 +170,10 @@ class UserQuestStepRepository extends BaseRepository
             }
             $memberQuestStep = UserQuest::where([
                 'user_id' => $guildMember->id,
-                'quest_route_id' => $userQuestStep->user_quest->quest_route_id
+                'quest_route_id' => $userQuestStep->user_quest()->quest_route_id
             ])->first()
             ->user_quest_steps()
-            ->where('step_id', $userQuestStep->step->id)
+            ->where('step_id', $userQuestStep->step()->id)
             ->first();
 
             $this->processFinishStep($memberQuestStep);
