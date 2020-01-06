@@ -173,7 +173,7 @@ class UserQuestStepRepository extends BaseRepository
                 'quest_route_id' => $userQuestStep->user_quest->quest_route_id
             ])->first()
             ->user_quest_steps()
-            ->where('step_id', $userQuestStep->step()->id)
+            ->where('step_id', $userQuestStep->step->id)
             ->first();
 
             $this->processFinishStep($memberQuestStep);
