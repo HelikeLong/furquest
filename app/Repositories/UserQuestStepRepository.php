@@ -66,7 +66,9 @@ class UserQuestStepRepository extends BaseRepository
         /** @var UserQuestStep $userQuestStep */
         $userQuestStep = $this->model()->findOrFail($userQuestStepId);
         if ($userQuestStep->status == 1) {
-            return 'ALREADY_FINISHED';
+            /** @var UserQuest $userQuest */
+            $userQuest = $userQuestStep->user_quest()->first();
+            return $this->getRewards($userQuestStep, $userQuest);
         }
 
         // Process the qrcodes
@@ -89,7 +91,7 @@ class UserQuestStepRepository extends BaseRepository
     {
         $result = true;
         foreach ($resolution as $res) {
-            $res = strip_tags(strtolower($res));
+            $res = strip_tags(strtolower(str_replace('https://furquest.crystalhorns.com/', '', $res)));
             $result &= (in_array($res, $stepResolution));
         }
         return $result;
@@ -125,29 +127,7 @@ class UserQuestStepRepository extends BaseRepository
         }
 
         //Get step rewards
-        /** @var StepReward $stepRewards */
-        $stepRewards = $userQuestStep->step()->first()->step_rewards()
-            ->with('reward_type')->get()->toArray();
-
-        // Get next step
-        /** @var QuestRoute $questRoute */
-        $questRoute = $userQuest->quest_route()->first();
-        /** @var QuestRoutesStep $nextStep */
-        $nextStep = $questRoute->quest_routes_steps()->where([
-            'step_origin_id' => $userQuestStep->step_id
-        ])->first();
-
-        if ($nextStep && $nextStep->step_dest) {
-            // Start next step for the user
-            $new_userQuestStep = new UserQuestStep();
-            $new_userQuestStep->step_id = $nextStep->step_dest->id;
-            $new_userQuestStep->user_quest_id = $userQuest->id;
-            $new_userQuestStep->save();
-
-            $stepRewards['nextStep'] = $new_userQuestStep;
-        }
-
-        return $stepRewards;
+        return $this->getRewards($userQuestStep, $userQuest);
     }
 
     /**
@@ -178,5 +158,37 @@ class UserQuestStepRepository extends BaseRepository
 
             $this->processFinishStep($memberQuestStep);
         }
+    }
+
+    /**
+     * @param UserQuestStep $userQuestStep
+     * @param UserQuest $userQuest
+     * @return StepReward
+     */
+    public function getRewards($userQuestStep, $userQuest)
+    {
+        /** @var StepReward $stepRewards */
+        $stepRewards = $userQuestStep->step()->first()->step_rewards()
+            ->with('reward_type')->get()->toArray();
+
+        // Get next step
+        /** @var QuestRoute $questRoute */
+        $questRoute = $userQuest->quest_route()->first();
+        /** @var QuestRoutesStep $nextStep */
+        $nextStep = $questRoute->quest_routes_steps()->where([
+            'step_origin_id' => $userQuestStep->step_id
+        ])->first();
+
+        if ($nextStep && $nextStep->step_dest) {
+            // Start next step for the user
+            $new_userQuestStep = new UserQuestStep();
+            $new_userQuestStep->step_id = $nextStep->step_dest->id;
+            $new_userQuestStep->user_quest_id = $userQuest->id;
+            $new_userQuestStep->save();
+
+            $stepRewards['nextStep'] = $new_userQuestStep;
+        }
+
+        return $stepRewards;
     }
 }
