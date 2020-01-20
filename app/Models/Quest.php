@@ -29,7 +29,9 @@ class Quest extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
+    protected $appends = ['step_count'];
+
+    protected $fillable = [
 		'name',
 		'image'
 	];
@@ -48,4 +50,11 @@ class Quest extends Eloquent
 	{
 		return $this->hasMany(Tip::class);
 	}
+
+	public function getStepCountAttribute()
+    {
+        return $this->steps()
+            ->where('status', 1)
+            ->count();
+    }
 }

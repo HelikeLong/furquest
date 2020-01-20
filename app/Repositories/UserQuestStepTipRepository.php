@@ -47,6 +47,8 @@ class UserQuestStepTipRepository extends BaseRepository
 
     public function nextTip($userQuest, $userQuestSteps)
     {
+        // TODO: Devolver a ultima dica caso seja solicitado uma nova dica antes do tempo para dica
+
         $step = UserQuestStep::where([
             'user_quest_id' => $userQuest,
             'id' => $userQuestSteps
@@ -67,7 +69,6 @@ class UserQuestStepTipRepository extends BaseRepository
             'user_quest_step_id' => $userQuestSteps,
             'tip_id' => $nextTip->id
         ]) ) {
-            //TODO: Create tip for the active user's guild partners
             $guildMembers = Guild::whereHas('users', function ($query) {
                 $query->where('user_id', auth()->user()->id);
             })
