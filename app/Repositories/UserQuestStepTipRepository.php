@@ -6,6 +6,8 @@ use App\Models\Guild;
 use App\Models\UserQuest;
 use App\Models\UserQuestStep;
 use App\Models\UserQuestStepTip;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 /**
  * Class UserQuestStepTipRepository
@@ -56,14 +58,25 @@ class UserQuestStepTipRepository extends BaseRepository
         ->with(['step', 'step.tips'])
         ->first();
 
-        $currentTips = $this->model()
-            ->select(['id'])
+        $currentTipsQuery = $this->model()
             ->where([
                 'user_quest_id' => $userQuest,
                 'user_quest_step_id' => $userQuestSteps
-            ])->count();
+            ]);
 
-        $nextTip = $step->step->tips[$currentTips ? $currentTips : 0];
+        /** @var UserQuestStepTip $lastTip */
+        $lastTip = $currentTipsQuery->latest()->first();
+        if ($lastTip) {
+            $created_at = $lastTip->created_at;
+            $delay = $lastTip->tip()->first()->delay;
+            $interval = Carbon::now()->diffInSeconds($created_at->addSeconds($delay), false);
+            if ($interval >= 0) {
+                return $this->getTips($userQuest, $userQuestSteps);
+            }
+        }
+
+        $countTips = $currentTipsQuery->count();
+        $nextTip = $step->step->tips[$countTips ? $countTips : 0];
         if( $this->model()->create([
             'user_quest_id' => $userQuest,
             'user_quest_step_id' => $userQuestSteps,
