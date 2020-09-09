@@ -27,7 +27,7 @@
     <h3>Como posso participar da caçada?</h3>
     <p>
         Para que você possa participar dessa grande caçada, criamos 4 tipos de inscrições em nosso crowdfunding: <b>Aventureiro</b>, <b>Super aventureiro</b>, <b>Guilda</b> e <b>Super Guilda</b>. Ah, e todas as inscrições poderam de um sorteio de <b>brindes exclusivos</b>.<br/>
-        Confira mais detalhes em nosso crowdfunding: <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">https://www.kickante.com.br/campanhas/furquest-pirates-n-gears</a>
+{{--        Confira mais detalhes em nosso crowdfunding: <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">https://www.kickante.com.br/campanhas/furquest-pirates-n-gears</a>--}}
     </p>
 
     <h2>#PartiuFurQuest</h2>

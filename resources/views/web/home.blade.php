@@ -35,7 +35,7 @@
         </h1>
         <nav id="nav">
             <ul>
-                <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>
+{{--                <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>--}}
                 <li class="menu-link"><a>Conheça mais <i class="fa fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="{{ route('site.about.furquest') }}">O que é o Furquest?</a></li>
@@ -49,7 +49,7 @@
                     <a href="#menu" class="menuToggle"><span>Menu</span></a>
                     <div id="menu">
                         <ul>
-                            <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>
+{{--                            <li class="menu-link"><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears">Inscreva-se!</a></li>--}}
                             <li class="menu-link"><a>Conheça mais <i class="fa fa-chevron-down"></i></a>
                                 <ul class="submenu">
                                     <li><a href="{{ route('site.about.furquest') }}">O que é o Furquest?</a></li>
@@ -78,9 +78,9 @@
                 <img src="{{ vAsset('images/logo-negative-typo.png') }}" alt="FurQuest" width="250px">
             </h1>
             <p>Evento Furry de Caçada ao Tesouro em ARG.</p>
-            <ul class="actions special">
-                <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button primary cta">Quero Participar!</a></li>
-            </ul>
+{{--            <ul class="actions special">--}}
+{{--                <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button primary cta">Quero Participar!</a></li>--}}
+{{--            </ul>--}}
         </div>
         <a href="#two" class="more scrolly">Conheça</a>
     </section>
@@ -157,17 +157,17 @@
             </header>
             <ul class="features">
                 <li class="icon solid fa-dice-d6">
-                    <h3 class="font-furquest">Aventureiro - R$40</h3>
+                    <h3 class="font-furquest">Aventureiro</h3>
                     <ul>
                         <li>Badge</li>
                         <li>Cordão de Badge Simples</li>
                         <li>Bottoms e Adesivos</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=4000" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=4000" class="button fit">Quero esse!</a>--}}
                 </li>
                 <li class="icon solid fa-dice-d20">
-                    <h3 class="font-furquest">Super Aventureiro - R$55</h3>
+                    <h3 class="font-furquest">Super Aventureiro</h3>
                     <ul>
                         <li>Badge Exclusiva Plastificada</li>
                         <li>Cordão de Badge Especial</li>
@@ -176,10 +176,10 @@
                         <li>Mochila Especial</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=5500" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=5500" class="button fit">Quero esse!</a>--}}
                 </li>
                 <li class="icon solid fa-user-friends">
-                    <h3 class="font-furquest">Guilda - R$135</h3>
+                    <h3 class="font-furquest">Guilda</h3>
                     <ul>
                         <li><strong>Vale três inscrições</strong></li>
                         <li>Poder escolher os membros da Guilda</li>
@@ -189,10 +189,10 @@
                         <li>Bottoms e Adesivos</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=13500" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=13500" class="button fit">Quero esse!</a>--}}
                 </li>
                 <li class="icon solid fa-users">
-                    <h3 class="font-furquest">Super Guilda - R$185</h3>
+                    <h3 class="font-furquest">Super Guilda</h3>
                     <ul>
                         <li><strong>Vale três inscrições</strong></li>
                         <li>Poder escolher os membros da Guilda</li>
@@ -205,7 +205,7 @@
                         <li>Mochila Especial</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=18500" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=18500" class="button fit">Quero esse!</a>--}}
                 </li>
             </ul>
 
@@ -220,17 +220,17 @@
                 <li style="display:none;"></li>
                 <li style="display:none;"></li>
                 <li class="icon fa-heart">
-                    <h3 class="font-furquest">NPC - R$15</h3>
+                    <h3 class="font-furquest">NPC</h3>
                     <ul>
                         <li>Badge</li>
                         <li>Cordão de Badge Simples</li>
                         <li>Bottoms e Adesivos</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=1500" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=1500" class="button fit">Quero esse!</a>--}}
                 </li>
                 <li class="icon solid fa-heart">
-                    <h3 class="font-furquest">Super NPC - R$30</h3>
+                    <h3 class="font-furquest">Super NPC</h3>
                     <ul>
                         <li>Badge Exclusiva Plastificada</li>
                         <li>Cordão de Badge Especial</li>
@@ -239,7 +239,7 @@
                         <li>Mochila Especial</li>
                     </ul>
 
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=3000" class="button fit">Quero esse!</a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears/apoiar?amount=3000" class="button fit">Quero esse!</a>--}}
                 </li>
             </ul>
         </div>
@@ -247,12 +247,15 @@
 
     <!-- CTA -->
     <section id="cta" class="wrapper style4 text-center">
-        <img src="{{ vAsset('web/images/logo-piratesngears.png') }}" alt="FurQuest - Pirates 'n Gears">
+        <img src="{{ vAsset('images/logo-typo-alt.png') }}" alt="FurQuest">
         <div class="inner">
-            <p>Venha participar da primeira edição do FurQuest.<br/>Realizaremos-a no Parque Ibirapuera no dia 26 de Janeiro de 2020.</p>
+            <p>Em breve anunciaremos a próxima edição do evento, portanto, fique atento aos nossos canais para não perder nada!</p>
         </div>
         <ul class="actions special">
-            <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="button fit primary">Quero Participar!</a></li>
+            <li><a href="https://fb.com/FurQuestBR" class="icon brands fa-facebook-f" style="font-size: 30px; line-height: 60px; width: 60px; height: 60px; margin: 4px; border-radius: 50%; border: 1px solid #FFF; display: block;"><span class="label">Facebook</span></a></li>
+            {{--            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>--}}
+            <li><a href="https://t.me/FurQuest" class="icon brands fa-telegram" style="font-size: 30px; line-height: 60px; width: 60px; height: 60px; margin: 4px; border-radius: 50%; border: 1px solid #FFF; display: block;"><span class="label">Telegram</span></a></li>
+            <li><a href="https://youtube.com/watch?v=XMUVxtMb2LA" class="icon brands fa-youtube" style="font-size: 30px; line-height: 60px; width: 60px; height: 60px; margin: 4px; border-radius: 50%; border: 1px solid #FFF; display: block;"><span class="label">Youtube</span></a></li>
         </ul>
     </section>
 
@@ -263,7 +266,7 @@
 {{--            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>--}}
             <li><a href="https://t.me/FurQuest" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
             <li><a href="https://youtube.com/watch?v=XMUVxtMb2LA" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
-            <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="icon solid fa-globe"><span class="label">Kickante</span></a></li>
+{{--            <li><a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="icon solid fa-globe"><span class="label">Kickante</span></a></li>--}}
         </ul>
         <ul class="copyright">
             <li>&copy; FurQuest</li><li>Um projeto <a href="https://crystalhorns.com/">CrystalHorns</a></li>

@@ -26,9 +26,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="icon solid fa-globe">
-                        <span class="">Kickante FurQuest</span>
-                    </a>
+{{--                    <a href="https://www.kickante.com.br/campanhas/furquest-pirates-n-gears" class="icon solid fa-globe">--}}
+{{--                        <span class="">Kickante FurQuest</span>--}}
+{{--                    </a>--}}
                 </li>
             </ul>
         </div>

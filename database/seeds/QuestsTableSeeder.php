@@ -23,6 +23,7 @@ class QuestsTableSeeder extends Seeder
                 'name' => 'Kittens!',
                 'image' => NULL,
                 'history' => 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
+                'theme' => 'demo',
                 'created_at' => NULL,
                 'updated_at' => NULL,
                 'deleted_at' => NULL,

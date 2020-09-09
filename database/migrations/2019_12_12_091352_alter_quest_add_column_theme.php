@@ -14,7 +14,7 @@ class AlterQuestAddColumnTheme extends Migration
     public function up()
     {
         Schema::table('quests', function (Blueprint $table) {
-            $table->string('theme')->nullable()->after('history');
+            $table->string('theme')->after('history');
         });
     }
 
