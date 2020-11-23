@@ -35,6 +35,7 @@ class UsersController extends Controller
     public function index(PesquisasRequest $pesquisasRequest)
     {
 
+        return view('admin.users.index');
     }
 
     /**
@@ -45,6 +46,7 @@ class UsersController extends Controller
     public function create(StoreUsuarioRequest $storeUsuarioRequest)
     {
 
+        return view('admin.users.create');
     }
 
     /**
@@ -56,6 +58,7 @@ class UsersController extends Controller
     public function edit($id, UpdateUsuarioRequest $updateUsuarioRequest)
     {
 
+        return view('admin.users.edit');
     }
 
     /**
@@ -74,6 +77,7 @@ class UsersController extends Controller
     public function trashed(PesquisasRequest $pesquisasRequest)
     {
 
+        return view('admin.users.trashed');
     }
 
     /**

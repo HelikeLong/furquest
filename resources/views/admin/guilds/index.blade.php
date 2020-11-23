@@ -36,7 +36,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($grupos as $grupo)
+                        {{-- @foreach($grupos as $grupo)
                             <tr>
                                 <td class="align-middle">{{ $grupo->id }}</td>
                                 <td class="align-middle" nowrap>{{ $grupo->titulo }}</td>
@@ -57,7 +57,7 @@
                                     {{ Form::close() }}
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -65,17 +65,17 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-md-12">{{ $grupos->appends(request()->query())->links() }}</div>
+        {{-- <div class="col-md-12">{{ $grupos->appends(request()->query())->links() }}</div>
         <div class="col-md-12">
             Página {{$grupos->currentPage()}} de {{$grupos->lastPage()}},
             mostrando {{$grupos->count()}} resultados de {{$grupos->total()}} no total
-        </div>
+        </div> --}}
     </div>
 @endsection
 
-@section('css')
+@push('css')
     <link href="{{ vAsset('idealui/assets/vendor/material-input/css/material-input.css') }}" rel="stylesheet"/>
-@endsection
+@endpush
 
-@section('scripts')
-@endsection
+@push('scripts')
+@endpush

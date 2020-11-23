@@ -21,7 +21,7 @@
                     data-toggle="tooltip" title="" data-original-title="Filtrar">
                 <i aria-hidden="true" class="mdi mdi-magnify"></i> <span>Filtrar</span>
             </button>
-            <a href="{{ route('admin.usuarios.index') }}" class="btn btn-outline-danger btn-toolbar addAction text-uppercase d-block" data-toggle="tooltip" title="Limpar pesquisa">
+            <a href="" class="btn btn-outline-danger btn-toolbar addAction text-uppercase d-block" data-toggle="tooltip" title="Limpar pesquisa">
                 <i class="mdi mdi-filter-remove"></i>
             </a>
         </div>

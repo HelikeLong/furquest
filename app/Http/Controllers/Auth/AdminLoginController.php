@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
+use App\Http\Requests\AuthAdminRequest;
 use App\Models\UserType;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -47,17 +47,17 @@ class AdminLoginController extends Controller
     }
 
     /**
-     * @param AuthRequest $autenticar
+     * @param AuthAdminRequest $autenticar
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(AuthRequest $autenticar)
+    public function login(AuthAdminRequest $autenticar)
     {
         if (Auth::guard('admin')->attempt([
             'email' => $autenticar->email,
             'password' => $autenticar->password,
             'user_type_id' => UserType::ADMIN,
         ])) {
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('admin.dashboard.index'));
         }
         flash('Credenciais inválidas')->important();
         return redirect()->back()->withInput($autenticar->only('email'));

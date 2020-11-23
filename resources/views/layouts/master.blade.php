@@ -8,8 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Webapp dashboard for SecretaryBird Ecosystem" name="description"/>
-    <meta content="Creative Tim && Helike Long" name="author"/>
+    <meta content="FurQuest Admin panel" name="description"/>
+    <meta content="Creative Tim && Crystal Horns" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
@@ -20,9 +20,10 @@
     <link href="{{asset('node_modules/@mdi/font/css/materialdesignicons.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css"/>
 
-    <link href="{{ asset('paper-dashboard/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <!-- MetisMenu CSS -->
-    <link href="{{asset('node_modules/metismenu/dist/metisMenu.min.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- CSS Files -->
+    <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    
     <!-- Sweet Alert -->
     <link href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet" type="text/css"/>
 
@@ -31,114 +32,29 @@
     <link href="{{ asset('node_modules/jquery-ui/themes/base/datepicker.css') }}" rel="stylesheet"/>
     <link href="{{ asset('node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet"/>
+
     <!-- Ladda Button -->
     <link href="{{ asset('node_modules/ladda/dist/ladda.min.css') }}" rel="stylesheet"/>
+
     <!-- IdealUI -->
     <link href="//idealtrends.io/idealui/dist/idealui/idealui.min.css" rel="stylesheet" type="text/css"/>
     <link href="//idealtrends.io/idealui/assets/vendor/material-input/css/material-input.css" rel="stylesheet" type="text/css"/>
+
     <!-- App css -->
-    <link href="{{asset('paper-dashboard/css/paper-dashboard.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('paper-dashboard/demo/demo.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css"/>
-    @yield('css')
+    @stack('css')
 </head>
 
 <body>
-    <div id="topnav">
-        <!-- Navbar -->
-        <nav class="navbar-custom">
-            {{--Menu--}}
-            <a href="{{route('admin.dashboard')}}" class="logo">
-                <div class="logo-lg">
-                    <img src="{{ asset('images/logo-notext-alt.png') }}" height="40">
-                </div>
-            </a>
-            <div class="topbar-menu">
-                <div class="container-fluid">
-                    <div id="navigation">
-                        @include('admin.elements.menu')
-                    </div>
-                </div>
-            </div>
-            <div class="actions">
-                <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" id="dropdownNotifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="nc-icon nc-bell-55"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">Notificações</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownNotifications" x-placement="bottom-end">
-                                    @include('admin.elements.notifications')
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="nav-item btn-rotate dropdown-user">
-                            <div class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle nav-user" id="dropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="ml-1"> {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->nome }} <i class="mdi mdi-chevron-down"></i> </span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser" x-placement="bottom-end">
-                                    <div class="dropdown-item noti-title">
-                                        <h6 class="text-overflow m-0">Olá, {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->nome }}
-                                            !</h6>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{{route('admin.usuarios.edit', \Illuminate\Support\Facades\Auth::guard('admin')->user()->id) }}" class="dropdown-item notify-item link-out">
-                                        <i class="dripicons-user"></i> <span>Conta</span>
-                                    </a>
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="dripicons-gear"></i> <span>Configurações</span>
-                                    </a>
-                                    <a href="{{ route('noacl.route.login.logout') }}" class="dropdown-item notify-item">
-                                        <i class="dripicons-power"></i> <span>Sair</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-         </nav>
-    </div>
-
-    <div class="wrapper ">
-        <div>
-            @section('title-bar')
-                <div class="page-title-box">
-                    @if (!\Request::is('/'))
-                        <a href="javascript:history.back()" role="button" class="header-icon btn-voltar link-out">
-                            <i class="mdi mdi-chevron-left"></i>
-                        </a>
-                    @endif
-                    @include('admin.elements.breadcrumb')
-                    <h4 class="page-title @if (\Request::is('/')) p-0 @endif">@yield('h1')</h4>
-                </div>
-            @show
-        </div>
-
-        <div class="container-fluid">
-            <div class="content">
-                <div class="content_container">
-                    @include('flash::message')
-                    @include('layouts.elements.validator')
-                    @yield('content')
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer footer-black  footer-white ">
-        @include('admin.elements.footer')
-    </footer>
+    @auth()
+        @include('layouts.page_templates.auth')
+    @endauth
 </body>
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('node_modules/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('paper') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- jQuery  -->
     <script src="{{asset('node_modules/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <!-- SweetAlert -->
@@ -168,7 +84,7 @@
     </script>
     <script src="//idealtrends.io/idealui/assets/vendor/form-wizard/js/form-wizard.js"></script>
 
-    <script src="{{ asset('paper-dashboard/js/paper-dashboard.min.js') }}"></script>
+    <script src="{{ asset('paper') }}/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Core.js -->
     <script src="{{asset('js/core.js')}}"></script>
 
@@ -180,5 +96,5 @@
             }
         });
     </script>
-    @yield('scripts')
+    @stack('scripts')
 </html>

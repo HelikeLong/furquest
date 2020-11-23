@@ -56,35 +56,104 @@ Route::group(['namespace' => 'Auth', 'middleware' => [], 'as' => 'site.'], funct
 //Rotas para o painel administrativo
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => [], 'as' => 'admin.'], function () {
     //Dasboard
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-    Route::group(['middleware' => []], function () {
-        //Guilds
-        Route::prefix('/guilds')->group(function () {
-            Route::get('/', 'GuildsController@index')->name('guilds.index');
+    Route::group(['as' => 'participants.'], function () {
+        //Users
+        Route::prefix('/users')->as('users.')->group(function () {
+            Route::get('/', 'UsersController@index')->name('index');
 
-            Route::get('/trash', 'GuildsController@trashed')->name('guilds.trashed');
-            Route::delete('/delete/{id}', 'GuildsController@destroy')->name('guilds.destroy');
-            Route::get('/{guild}/restaura', 'GuildsController@restore')->name('guilds.restore');
-            Route::delete('/{guild}/forceDelete', 'GuildsController@forceDelete')->name('guilds.forceDelete');
+            Route::get('/trash', 'UsersController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'UsersController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'UsersController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'UsersController@forceDelete')->name('forceDelete');
 
-            Route::match(['post', 'get'], '/{id}/editar', 'GuildsController@edit')->name('guilds.edit');
-            Route::match(['post', 'get'], '/cadastro', 'GuildsController@create')->name('guilds.create');
+            Route::match(['post', 'get'], '/{id}/edit', 'UsersController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'UsersController@create')->name('create');
+
+            Route::get('/profile/{id}', 'UsersController@profile')->name('profile');
         });
 
-        //Users
-        Route::prefix('/users')->group(function () {
-            Route::get('/', 'UsersController@index')->name('users.index');
+        //Guilds
+        Route::prefix('/guilds')->as('guilds.')->group(function () {
+            Route::get('/', 'GuildsController@index')->name('index');
 
-            Route::get('/trash', 'UsersController@trashed')->name('users.trashed');
-            Route::delete('/delete/{id}', 'UsersController@destroy')->name('users.destroy');
-            Route::get('/{user}/restaura', 'UsersController@restore')->name('users.restore');
-            Route::delete('/{user}/forceDelete', 'UsersController@forceDelete')->name('users.forceDelete');
+            Route::get('/trash', 'GuildsController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'GuildsController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'GuildsController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'GuildsController@forceDelete')->name('forceDelete');
 
-            Route::match(['post', 'get'], '/{id}/editar', 'UsersController@edit')->name('users.edit');
-            Route::match(['post', 'get'], '/cadastro', 'UsersController@create')->name('users.create');
+            Route::match(['post', 'get'], '/{id}/edit', 'GuildsController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'GuildsController@create')->name('create');
 
-            Route::get('/profile/{id}', 'UsersController@profile')->name('users.profile');
+            Route::get('/profile/{id}', 'GuildsController@profile')->name('profile');
+        });
+
+        //Tickets
+        Route::prefix('/tickets')->as('tickets.')->group(function () {
+            Route::get('/', 'TicketsController@index')->name('index');
+
+            Route::get('/trash', 'TicketsController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'TicketsController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'TicketsController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'TicketsController@forceDelete')->name('forceDelete');
+
+            Route::match(['post', 'get'], '/{id}/edit', 'TicketsController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'TicketsController@create')->name('create');
+        });
+    });
+
+    Route::group(['as' => 'quests.'], function () {
+        //Quest
+        Route::prefix('/quests')->as('quests.')->group(function () {
+            Route::get('/', 'QuestsController@index')->name('index');
+
+            Route::get('/trash', 'QuestsController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'QuestsController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'QuestsController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'QuestsController@forceDelete')->name('forceDelete');
+
+            Route::match(['post', 'get'], '/{id}/edit', 'QuestsController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'QuestsController@create')->name('create');
+        });
+
+        //Step
+        Route::prefix('/quest-steps')->as('questSteps.')->group(function () {
+            Route::get('/', 'QuestStepsController@index')->name('index');
+
+            Route::get('/trash', 'QuestStepsController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'QuestStepsController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'QuestStepsController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'QuestStepsController@forceDelete')->name('forceDelete');
+
+            Route::match(['post', 'get'], '/{id}/edit', 'QuestStepsController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'QuestStepsController@create')->name('create');
+        });
+
+        //Tip
+        Route::prefix('/quest-step-tips')->as('questStepTips.')->group(function () {
+            Route::get('/', 'QuestStepTipsController@index')->name('index');
+
+            Route::get('/trash', 'QuestStepTipsController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'QuestStepTipsController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'QuestStepTipsController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'QuestStepTipsController@forceDelete')->name('forceDelete');
+
+            Route::match(['post', 'get'], '/{id}/edit', 'QuestStepTipsController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'QuestStepTipsController@create')->name('create');
+        });
+
+        //Routes
+        Route::prefix('/quest-routes')->as('questRoutes.')->group(function () {
+            Route::get('/', 'QuestRoutesController@index')->name('index');
+
+            Route::get('/trash', 'QuestRoutesController@trashed')->name('trashed');
+            Route::delete('/delete/{id}', 'QuestRoutesController@destroy')->name('destroy');
+            Route::get('/{id}/restore', 'QuestRoutesController@restore')->name('restore');
+            Route::delete('/{id}/forceDelete', 'QuestRoutesController@forceDelete')->name('forceDelete');
+
+            Route::match(['post', 'get'], '/{id}/edit', 'QuestRoutesController@edit')->name('edit');
+            Route::match(['post', 'get'], '/create', 'QuestRoutesController@create')->name('create');
         });
     });
 });
