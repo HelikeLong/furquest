@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\ChangePasswordRequest;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\Api\ChangePasswordRequest;
+use App\Http\Requests\Api\UserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Services\UploadService;

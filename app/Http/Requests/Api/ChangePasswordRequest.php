@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\UploadedFile;
 
 /**
- * Class UserQuestStepRequest
+ * Class ChangePasswordRequest
  * @package App\Http\Requests
  *
- * @property string $answers
+ * @property $oldPassword
+ * @property $newPassword
+ * @property $checkPassword
  */
-class UserQuestStepRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
-    protected $rules = [
-        'answers' => 'array|required'
-    ];
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -34,6 +31,9 @@ class UserQuestStepRequest extends FormRequest
      */
     public function rules()
     {
-        return $this->rules;
+        return [
+            'newPassword' => 'same:confirmPassword|required',
+            'confirmPassword' => 'required'
+        ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UserContactRequest;
+use App\Http\Requests\Api\UserContactRequest;
 use App\Models\ContactsType;
 use App\Repositories\UserContactRepository;
 use App\Http\Controllers\Controller;

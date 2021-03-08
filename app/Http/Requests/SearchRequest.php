@@ -4,7 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PesquisasRequest extends FormRequest
+/**
+ * Search Request
+ * 
+ * @param string $search
+ */
+class SearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +29,7 @@ class PesquisasRequest extends FormRequest
     public function rules()
     {
         return [
-//            'encontrar' => 'required'
+            'search' => ''
         ];
     }
 

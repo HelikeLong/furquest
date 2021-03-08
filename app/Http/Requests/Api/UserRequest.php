@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
@@ -50,6 +50,29 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        switch ($this->getMethod()) {
+            case 'PUT':
+                $this->put();
+                break;
+            case 'PATCH':
+                $this->patch();
+                break;
+        }
+
         return $this->rules;
+    }
+
+    /**
+     * Method used to update user info
+     */
+    private function put() {
+        $this->rules['name'] .= '|required';
+    }
+
+    /**
+     * Method used to update user picture
+     */
+    private function patch() {
+        $this->rules['photo'] .= '|required';
     }
 }

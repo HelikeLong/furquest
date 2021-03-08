@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Requests\UserContactRequest;
+use App\Http\Requests\Api\UserContactRequest;
 use App\Models\UserContact;
 use App\Repositories\UserContactRepository;
 

@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class ChangePasswordRequest
+ * Class AuthRequest
  * @package App\Http\Requests
  *
- * @property $oldPassword
- * @property $newPassword
- * @property $checkPassword
+ * @property $username
+ * @property $password
  */
-class ChangePasswordRequest extends FormRequest
+class AuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,8 +31,8 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'newPassword' => 'same:confirmPassword|required',
-            'confirmPassword' => 'required'
+            'username' => 'required|email',
+            'password' => 'required|min:6|max:100',
         ];
     }
 }

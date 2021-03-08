@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PesquisasRequest;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\UserRequest;
+use App\Models\UserType;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
@@ -29,36 +31,47 @@ class UsersController extends Controller
     }
 
     /**
-     * @param PesquisasRequest $pesquisasRequest
+     * @param SearchRequest $searchRequest
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(PesquisasRequest $pesquisasRequest)
+    public function index(SearchRequest $searchRequest)
     {
+        $users = User::where('user_type_id', '<>', UserType::ADMIN);
 
-        return view('admin.users.index');
+        if ($searchRequest->search) {
+            $users
+                ->where('name', 'like', "%".$searchRequest->search."%")
+                ->orWhere('social_name', 'like', "%".$searchRequest->search."%")
+                ->orWhere('email', 'like', "%".$searchRequest->search."%");
+        }
+            
+        $users = $users->paginate(10);
+
+        return view('admin.users.index')->with([
+            'users' => $users
+        ]);
     }
 
     /**
-     * @param ControleAcessoService $controleAcessoService
-     * @param StoreUsuarioRequest $storeUsuarioRequest
+     * @param UserRequest $userRequest
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function create(StoreUsuarioRequest $storeUsuarioRequest)
+    public function create(UserRequest $userRequest)
     {
+        
 
-        return view('admin.users.create');
+        return view('admin.users.create')->with([]);
     }
 
     /**
      * @param $id
-     * @param UpdateUsuarioRequest $updateUsuarioRequest
-     * @param ControleAcessoService $controleAcessoService
+     * @param UserRequest $userRequest
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function edit($id, UpdateUsuarioRequest $updateUsuarioRequest)
+    public function edit($id, UserRequest $userRequest)
     {
 
-        return view('admin.users.edit');
+        return view('admin.users.edit')->with([]);
     }
 
     /**
@@ -67,17 +80,18 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-
+        
+        return $this->successResponse('');
     }
 
     /**
      * Exibir itens removidos com softdeleted
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function trashed(PesquisasRequest $pesquisasRequest)
+    public function trashed(SearchRequest $searchRequest)
     {
 
-        return view('admin.users.trashed');
+        return view('admin.users.trashed')->with([]);
     }
 
     /**
@@ -87,6 +101,7 @@ class UsersController extends Controller
     public function restore($id)
     {
 
+        return $this->successResponse('');
     }
 
     /**
@@ -96,5 +111,6 @@ class UsersController extends Controller
     public function forceDelete($id)
     {
 
+        return $this->successResponse('');
     }
 }

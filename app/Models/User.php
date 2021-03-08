@@ -69,8 +69,7 @@ class User extends Authenticatable
 
 	public function guilds()
 	{
-		return $this->belongsToMany(Guild::class, 'logs_guild_user')
-					->withPivot('id');
+		return $this->belongsToMany(Guild::class, 'guild_user');
 	}
 
 	public function user_contacts()

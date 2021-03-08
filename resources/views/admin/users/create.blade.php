@@ -1,31 +1,23 @@
 @extends('layouts.master')
 
-@section('h1', 'Adicionar Usuário')
-
 @section('content')
-    <div class=" form-header-classic materialize">
+    <div class="form-header-classic materialize">
         {{ Form::open(['class' => 'form-ladda']) }}
-        <fieldset class='informacoes'>
+        <fieldset class='info'>
             <div class="card-box">
-                @include('admin.users.blocks.informacoes')
+                @include('admin.users.blocks.info')
             </div>
         </fieldset>
 
-        @include('admin.users.blocks.permissoes')
-
         <div class="form-wizard-buttons sticky-button">
-            <button type="submit" class="btn btn-success btn-block btn-small ladda-button">Salvar</button>
+            <button type="submit" class="btn btn-success btn-block btn-small ladda-button">{{ __('Save') }}</button>
         </div>
         {{ Form::close() }}
     </div>
 @endsection
 
-@section('css')
-@endsection
+@push('css')
+@endpush
 
-@section('scripts')
-    <script>
-        var grupoUrl = '{{route('admin.grupos.permissoes')}}';
-    </script>
-    <script src="{{asset('js/admin/usuarios/grupo_permissoes.js')}}"></script>
-@endsection
+@push('scripts')
+@endpush

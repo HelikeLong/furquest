@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 /**
- * Class AuthRequest
+ * Class UserQuestStepRequest
  * @package App\Http\Requests
  *
- * @property $username
- * @property $password
+ * @property string $answers
  */
-class AuthRequest extends FormRequest
+class UserQuestStepRequest extends FormRequest
 {
+    protected $rules = [
+        'answers' => 'array|required'
+    ];
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -30,9 +34,6 @@ class AuthRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'username' => 'required|email',
-            'password' => 'required|min:6|max:100',
-        ];
+        return $this->rules;
     }
 }

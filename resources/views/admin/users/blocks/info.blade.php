@@ -61,27 +61,4 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-4">
-            <div class="form-group">
-                {{ Form::label('grupo_id', 'Grupo de Permissões *') }}
-                {{ Form::select('grupos[grupo_id]', $grupos, (isset($grupo->id) ? $grupo->id : []), [
-                    'id' => 'grupo_id',
-                    'class' => 'select2-cont',
-                    'placeholder' => '-- Selecione --'
-                ]) }}
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                {{ Form::label('status_id', 'Status *') }}
-                {{ Form::select('status_id', $status, null, [
-                    'id' => 'status_id',
-                    'class' => 'select2-cont',
-                    'placeholder' => '-- Selecione --'
-                ]) }}
-            </div>
-        </div>
-    </div>
 </div>
